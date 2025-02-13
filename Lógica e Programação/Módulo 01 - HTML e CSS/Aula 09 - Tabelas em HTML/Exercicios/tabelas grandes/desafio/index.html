@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <colgroup>
+          <col style="width: 30%;"> <!-- Produto -->
+          <col style="width: 20%;"> <!-- Quantidade -->
+          <col style="width: 20%;"> <!-- Preço Unitário -->
+          <col style="width: 30%;"> <!-- Preço Total -->
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço Unitário</th>
+            <th>Preço Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Notebook</td>
+            <td>2</td>
+            <td>R$ 3.500</td>
+            <td>R$ 7.000</td>
+          </tr>
+          <tr>
+            <td>Teclado</td>
+            <td>5</td>
+            <td>R$ 150</td>
+            <td>R$ 750</td>
+          </tr>
+          <tr>
+            <td>Mouse</td>
+            <td>3</td>
+            <td>R$ 50</td>
+            <td>R$ 150</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"><strong>Total</strong></td>
+            <td id="resultado"><strong>R$ 7.900</strong></td>
+          </tr>
+          <!-- <tr>
+            <td colspan="2" id="espacoVazio"></td>
+            <td><strong>Total</strong></td>
+            <td id="resultado"><strong>R$ 7.900</strong></td>
+          </tr> -->
+        </tfoot>
+      </table>       
+</body>
+</html>

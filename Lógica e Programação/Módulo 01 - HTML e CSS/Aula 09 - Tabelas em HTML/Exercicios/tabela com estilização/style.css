@@ -1,0 +1,22 @@
+table {
+    border-collapse: collapse;
+    width: 60vw;
+}
+
+td, th {
+    border: 2px solid black;
+    text-align: center;
+    padding: 5px 5px;
+}
+
+th {
+    background-color: orange;
+}
+
+tr:nth-child(even){
+    background-color: lightgray;
+}
+
+td:hover,th:hover{
+    background-color: aqua;
+}
