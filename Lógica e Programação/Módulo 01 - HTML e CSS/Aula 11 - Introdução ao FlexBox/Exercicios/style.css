@@ -1,8 +1,109 @@
-input,button,textarea,select{
-    display: block;
-    margin: 10px;
+/* class="card">
+<p class="img-card"><img src="" alt=""></p>
+<p class="descricao-card"></p>
+<p class="valor-card"></p>
+<p class="parcelas-cad"></p>
+<p class="frete-cad"></p> */
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
-.radio {
-    display: inline;
+body {
+    background-color: #E3E6E6;
+}
+
+
+.container-cabecalho {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px;
+    height: 15vh ;
+    background-color: #131921;
+    color: white;
+}
+
+#pesquisa-produto{
+    width: 40vw;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+nav, h1{
+    padding: 50px;
+}
+
+nav ul {
+    display: flex; 
+    list-style: none; 
+    gap: 20px; /* Espaçamento entre os links */
+    font-size: 1.8em;
+}
+
+nav a {
+    text-decoration: none; 
+    color: white; 
+    font-weight: bold;
+}
+
+main {
+    width: 60vw;
+    margin: 30px auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-content: flex-start;
+    gap: 20px;
+}
+
+.card {
+    border: 0.5px solid rgba(0, 0, 0, 0.196);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.169);
+    width: 300px;
+    height: 380px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.img-card {
+    text-align: center;
+    margin: 30px;
+}
+
+.img-card > img{
+    width: 100%;
+    height: auto;
+}
+
+.descricao-card {
+    padding: 10px 20px;
+    font-size: 1.2em;
+}
+
+.valor-card {
+    padding: 10px 20px;
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+.frete-card{
+    padding: 10px 20px;
+    font-size: 1.4em;
+    color: #00A650;
+    font-weight: 700;
 }
