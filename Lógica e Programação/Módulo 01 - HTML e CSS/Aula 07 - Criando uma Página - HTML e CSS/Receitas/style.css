@@ -1,15 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&display=swap');
 
+:root {
+    --cor-cabecalho-inicial:#e75f03d5;
+    --cor-cabecalho-final:#c15d00;
+    --cor-fundo-body: #f5f5f5;
+    --cor-rodape: #333;
+    --cor-main: #FFFFFF;
+    --cor-letras: #FFFFFF;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: var(--cor-fundo-body);
 }
 
 header {
-    background-image: linear-gradient(to bottom, #e75f03d5, #c15d00);
-    color: white;
+    background-image: linear-gradient(to bottom, var(--cor-cabecalho-inicial), var(--cor-cabecalho-final));
+    color: var(--cor-letras);
     padding: 15px;
     text-align: center;
     padding-bottom: 5px;
@@ -20,34 +29,31 @@ header > h1 {
     font-family: "Roboto", serif;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+nav {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-
-nav ul li a {
+nav a {
     color: white;
-    text-decoration: none;
     font-weight: bold;
+    text-decoration: none;
+    font-family: "Roboto", serif;
+    margin: 10px;
+    padding: 10px;
 }
 
-nav > ul > li > a:hover{
+nav > a:hover{
     background-color: #c15d00;
     padding: 8px;
     border-radius: 10px;
 }
 
 main {
-    max-width: 800px;
+    max-width: 50vw;
     margin: 20px auto;
     padding: 20px;
-    background: white;
+    background: var(--cor-main);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -74,9 +80,9 @@ p {
   
 footer {
     text-align: center;
-    padding: 15px;
-    background-color: #333;
-    color: white;
+    padding: 10px;
+    background-color: var(--cor-rodape);
+    color: var(--cor-letras);
     margin-top: 20px;
 }
   

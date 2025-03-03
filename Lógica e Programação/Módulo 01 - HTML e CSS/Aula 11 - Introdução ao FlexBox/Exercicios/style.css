@@ -39,11 +39,12 @@ nav, h1{
     padding: 50px;
 }
 
-nav ul {
+nav {
     display: flex; 
     list-style: none; 
+    flex-wrap: wrap;
     gap: 20px; /* Espaçamento entre os links */
-    font-size: 1.8em;
+    font-size: 1.6m;
 }
 
 nav a {
@@ -53,7 +54,8 @@ nav a {
 }
 
 main {
-    width: 60vw;
+    max-width: 60vw;
+    min-height: 80vh;
     margin: 30px auto;
 }
 
@@ -61,15 +63,17 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:center;
-    align-content: flex-start;
-    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
 }
 
 .card {
     border: 0.5px solid rgba(0, 0, 0, 0.196);
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.169);
-    width: 300px;
+    flex-basis: 300px;
+    flex-grow: 0;
+    flex-shrink: 0;
     height: 380px;
     border-radius: 10px;
     background-color: white;
@@ -78,6 +82,7 @@ main {
 .card:hover {
     transform: scale(1.02);
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .img-card {
@@ -107,3 +112,15 @@ main {
     color: #00A650;
     font-weight: 700;
 }
+
+footer {
+    position: relative;
+    bottom: 0;        /* Coloca o footer na parte inferior da tela */
+    left: 0;          /* Garante que o footer esteja alinhado à esquerda */
+    width: 100%;      /* Faz o footer ocupar toda a largura da tela */
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+}
+  
