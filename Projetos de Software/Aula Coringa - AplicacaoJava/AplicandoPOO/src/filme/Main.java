@@ -1,21 +1,29 @@
 package filme;
+import br.umc.filme.modelos.Filme;
 
 public class Main {
 
 	public static void main(String[] args) {
+		//Instanciando a classe filme
 		Filme filmeFavorito = new Filme();
 		
-		filmeFavorito.nome = "O Poderoso chefão";
-		filmeFavorito.anoLancamento = 1970;
-		filmeFavorito.duracaoMinutos = 180;
+		//Atribuindo valores para as propriedades da classe
+		filmeFavorito.setNome("O Poderoso chefão");
+		filmeFavorito.setAnoLancamento(1970);;
+		filmeFavorito.setDuracaoMinutos(180);;
 		
+		//Chamando o metodo que mostra as informações do Filme
 		filmeFavorito.exibeFichaTecnica();
+		
+		// Inserindo valores para o calculo da media do filme
 		filmeFavorito.avalia(8);
 		filmeFavorito.avalia(4);
 		filmeFavorito.avalia(3);
-		System.out.println(filmeFavorito.somaAvaliacao);
-		System.out.println(filmeFavorito.totalAvaliacao);
-		System.out.println(filmeFavorito.pegaMedia());
+		
+		// Chamando os metodos Getters e o calculaMedia
+		System.out.println(filmeFavorito.calculaMedia());
+		System.out.println(filmeFavorito.getTotalAvaliacao());
+		System.out.println(filmeFavorito.getSomaAvaliacao());
 	}
 
 }
