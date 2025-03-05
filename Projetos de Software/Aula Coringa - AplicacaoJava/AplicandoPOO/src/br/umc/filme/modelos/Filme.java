@@ -1,60 +1,33 @@
 package br.umc.filme.modelos;
 
-public class Filme {
+import br.umc.filme.calculo.Classificavel;
+
+public class Filme extends Titulo implements Classificavel {
 	
-	//Classes Privadas
-	private String nome;
-	private int anoLancamento;
-	private boolean incluidoPlano;
-	private int duracaoMinutos;
-	
-	//Metodos Privadas
-	private double somaAvaliacao;
-	private int totalAvaliacao;
-	
-	//Getters
-	public int getTotalAvaliacao() {
-		return totalAvaliacao;
-	}
-	
-	public double getSomaAvaliacao() {
-		return somaAvaliacao;
-	}
-	
-	//Setters para os atributos 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public void setAnoLancamento(int anoLancamento) {
-		this.anoLancamento = anoLancamento;
+	private String diretor;
+
+	public String getDiretor() {
+		return diretor;
 	}
 
-	public void setIncluidoPlano(boolean incluidoPlano) {
-		this.incluidoPlano = incluidoPlano;
+	public void setDiretor(String diretor) {
+		this.diretor = diretor;
 	}
-
-	public void setDuracaoMinutos(int duracaoMinutos) {
-		this.duracaoMinutos = duracaoMinutos;
-	}
-
-	//Metodos
-	//Metodo para mostrar as propriedades da classe
+	
+	@Override
 	public void exibeFichaTecnica () {
-		System.out.println("Nome Filme: "+ nome);
-		System.out.println("Ano lançamento: " + anoLancamento);
-		System.out.println("Tempo de duracao: " + duracaoMinutos);
+		System.out.println("=== Ficha Técnica do Filme ===");
+		System.out.println("Nome Filme: "+ getNome());
+		System.out.println("Ano lançamento: " + getAnoLancamento());
+		System.out.println("Tempo de duracao: " + getDuracaoMinutos());
+		System.out.println("Diretor: " + diretor);
 	}
 
-	//Metodo soma as notas e o numeros de notas digitadas
-	public void avalia (double nota) {
-		somaAvaliacao += nota;
-		totalAvaliacao++;
+	@Override
+	public int getClassificacao() {
+		return (int) calculaMedia() / 2;
 	}
 	
-	//Metodos calcula a media
-	public double calculaMedia() {
-		return somaAvaliacao / totalAvaliacao;
-	}
+	
 	
 }

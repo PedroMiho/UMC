@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Exemplos {
+module PedidoItens {
 }
