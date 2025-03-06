@@ -9,7 +9,14 @@
     --cor-letras: #FFFFFF;
 }
 
-
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo-body);
+    text-align: center;
+}
+  
 header {
     background-image: linear-gradient(to bottom, var(--cor-cabecalho-inicial),var(--cor-cabecalho-final));
     color: var(--cor-letras);
@@ -46,17 +53,8 @@ nav > a:hover{
     border-radius: 10px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--cor-fundo-body);
-    text-align: center;
-}
-
-
 main {
-    min-height: 50vh;
+    min-height: 50vh
 }
 
 main > div > div > a {
