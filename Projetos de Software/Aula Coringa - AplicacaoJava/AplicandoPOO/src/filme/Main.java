@@ -1,4 +1,6 @@
 package filme;
+import java.util.ArrayList;
+
 import br.umc.filme.calculo.CalculadoraDeTempo;
 import br.umc.filme.calculo.FiltroRecomendacao;
 import br.umc.filme.modelos.Episodios;
@@ -46,6 +48,14 @@ public class Main {
 		System.out.println();
 		vingadores.exibeFichaTecnica();
 		System.out.println();
+		
+		//Criando lista
+		ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+		listaDeFilmes.add(vingadores);
+		listaDeFilmes.add(filmeFavorito);
+		System.out.println("Tamanho da lista " + listaDeFilmes.size());
+		System.out.println("Primeiro Filme" + listaDeFilmes.get(0).getNome());
+		System.out.println("Segundo Filme" + listaDeFilmes.get(1).getNome());
 		
 		
 		//Calculando o tempo total de tempo
