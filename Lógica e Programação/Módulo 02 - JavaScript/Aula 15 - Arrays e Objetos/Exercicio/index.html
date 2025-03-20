@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Produtos</h1>
+        <!-- Barra de pesquisa -->
+        <input type="text" id="search" placeholder="Pesquisar produto..." oninput="filtrarProdutos()" class="search-bar">
+        
+        <div id="produto-list">
+        <div class="produto">
+            <h2>Produto: Teclado</h2>
+            <p class="categoria-produto"><strong>Categoria:</strong></p> 
+            <p class="categoria">Periférico</p>
+            <p><strong>Preço:</strong> R$ 100,00</p>
+        </div>
+        <div class="produto">
+            <h2>Produto: Monitor</h2>
+            <p class="categoria-produto"><strong>Categoria:</strong></p> 
+            <p class="categoria">Eletrônico</p>
+            <p><strong>Preço:</strong> R$ 800,00</p>
+        </div>
+        <div class="produto">
+            <h2>Produto: Mouse</h2>
+            <p class="categoria-produto"><strong>Categoria:</strong></p> 
+            <p class="categoria">Periférico</p>
+            <p><strong>Preço:</strong> R$ 50,00</p>
+        </div>
+        <div class="produto">
+            <h2>Produto: Smartphone</h2>
+            <p class="categoria-produto"><strong>Categoria:</strong></p> 
+            <p class="categoria">Eletrônico</p>
+            <p><strong>Preço:</strong> R$ 1.500,00</p>
+        </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
