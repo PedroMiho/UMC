@@ -9,30 +9,33 @@ function calcularMedia() {
 
     // Verifica se as notas são válidas
     if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) { 
-        return resultado.innerText = "Por favor, preencha todas as notas!";
+        resultado.innerText = "Por favor, preencha todas as notas!";
     }
     
     else if (nota1 < 0 || nota2 < 0 || nota3 < 0) {
-        return resultado.innerText = "Por favor, insira notas maiores que 0";;
+        resultado.innerText = "Por favor, insira notas maiores que 0";;
     }
     
     else if (nota1 > 10 || nota2 > 10 || nota3 > 10) {
-        return resultado.innerText = "Por favor, insira notas menores que 10";
+        resultado.innerText = "Por favor, insira notas menores que 10";
     }
     
-    // Calcula a média
-    let media = (nota1 + nota2 + nota3) / 3;
-    let status;
-
-    // Define o status do aluno
-    if (media >= 7) {
-        status = "Aprovado ✅";
-    } else if (media >= 5) {
-        status = "Recuperação ⚠️";
-    } else {
-        status = "Reprovado ❌";
+    else {
+        
+        // Calcula a média
+        let media = (nota1 + nota2 + nota3) / 3;
+        let status;
+        
+        // Define o status do aluno
+        if (media >= 7) {
+            status = "Aprovado ✅";
+        } else if (media >= 5) {
+            status = "Recuperação ⚠️";
+        } else {
+            status = "Reprovado ❌";
+        }
+        
+        // Exibe o resultado na página
+        resultado.innerText = `Média: ${media.toFixed(2)} - Situação: ${status}`;
     }
-    
-    // Exibe o resultado na página
-    resultado.innerText = `Média: ${media.toFixed(2)} - Situação: ${status}`;
 }
