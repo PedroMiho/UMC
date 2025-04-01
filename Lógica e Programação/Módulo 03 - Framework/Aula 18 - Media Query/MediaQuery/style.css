@@ -68,7 +68,7 @@ img {
     }
 }
 
-@media (max-width: 768px){
+@media (min-width:481px) and (max-width: 768px){
     h1 {
         font-size: 1.2em;
     }
@@ -92,7 +92,7 @@ img {
     }
 }
 
-@media (max-width: 1024px){
+@media (min-width:769px) and (max-width: 1024px){
     h1 {
         font-size: 1.2em;
     }
@@ -107,6 +107,54 @@ img {
     }
     #notebook{
         display: none;
+    }
+    #desktop{
+        display: none;
+    }
+    #monitores-grandes{
+        display: none;
+    }
+}
+
+@media (min-width:1025px) and (max-width: 1440px){
+    h1 {
+        font-size: 1.2em;
+    }
+    #celular-pequeno {
+        display: none;
+    }
+    #celular-medio {
+        display: none;
+    }
+    #tablet{
+        display: none;
+    }
+    #notebook{
+        display: block;
+    }
+    #desktop{
+        display: none;
+    }
+    #monitores-grandes{
+        display: none;
+    }
+}
+
+@media (min-width:1921px){
+    h1 {
+        font-size: 1.2em;
+    }
+    #celular-pequeno {
+        display: none;
+    }
+    #celular-medio {
+        display: none;
+    }
+    #tablet{
+        display: none;
+    }
+    #notebook{
+        display: block;
     }
     #desktop{
         display: none;
