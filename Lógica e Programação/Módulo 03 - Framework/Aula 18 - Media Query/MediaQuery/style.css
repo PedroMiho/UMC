@@ -1,8 +1,14 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
 body {
     background-color: rgb(247, 247, 247);
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 h1 {
@@ -21,6 +27,7 @@ div{
 }
 
 img {
+    margin-top: 30px;
     width: 30%;
     height : auto;
 }
