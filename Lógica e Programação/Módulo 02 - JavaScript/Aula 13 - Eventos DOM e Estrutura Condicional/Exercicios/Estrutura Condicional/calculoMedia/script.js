@@ -5,8 +5,6 @@ function calcularMedia() {
     let nota3 = parseFloat(document.getElementById("nota3").value);
     let resultado = document.getElementById("resultado")
     
-    document.getElementById("mensagem").innerText = "Texto alterado com JavaScript!";
-
     // Verifica se as notas são válidas
     if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) { 
         resultado.innerText = "Por favor, preencha todas as notas!";
