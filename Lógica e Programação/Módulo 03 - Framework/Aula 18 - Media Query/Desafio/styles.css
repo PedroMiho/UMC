@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para o formulário */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 60vw;
+    height: auto    ;
+}
+
+#titulo{
+    margin-bottom: 10px;
+}
+
+.background-image{
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.123);
+}
+
+#telaMedio {
+    display: none;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 50px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: white;
+}
+
+
+button {
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media (min-width: 1026px) and (max-width: 1440px) {
+    #telaGrande {
+        display: none;
+    }
+    #telaMedio {
+        display: block;
+        width: 100%;
+    }
+  
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 40vw;
+        height: 60vh;
+    }
+    
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 1025px) {
+    #telaGrande {
+        display: none;
+    }
+    #telaMedio {
+        display: none;
+    }
+    
+}
