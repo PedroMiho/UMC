@@ -170,3 +170,19 @@ img {
         display: none;
     }
 }
+
+
+
+
+@media (max-width: 480px) {
+    body {
+        background-color: lightblue;
+    }
+}
+
+
+
+
+@media (condição) {
+    /* Regras de estilo aplicadas quando a condição for verdadeira */
+}
