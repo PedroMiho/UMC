@@ -6,34 +6,20 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
+    color: white;
     height: 100vh;
-}
-
-.container {
-    display: flex;
-    flex-direction: row-reverse;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para o formulário */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 60vw;
-    height: auto    ;
 }
 
 #titulo{
     margin-bottom: 10px;
 }
 
-.background-image{
-    width: 40%;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.123);
+#telaGrande {
+    display: none;
 }
 
 #telaMedio {
@@ -80,9 +66,6 @@ button:hover {
 }
 
 @media (min-width: 1026px) and (max-width: 1440px) {
-    #telaGrande {
-        display: none;
-    }
     
     .container {
         display: flex;
@@ -91,13 +74,17 @@ button:hover {
         width: 40vw;
         height: 60vh;
     }
-    
+        
     #telaMedio {
         display: block;
         width: 100%;
-        height: 600px;
+        height: auto;
     }
 
+    #telaGrande {
+        display: none;
+    }
+    
     .login-form {
         display: flex;
         flex-direction: column;
@@ -106,9 +93,33 @@ button:hover {
     }
 }
 
-@media (max-width: 1025px) {
+@media (min-width: 1441px) {
+
+    .container {
+        display: flex;
+        flex-direction: row-reverse;
+        background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para o formulário */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        width: 60vw;
+        height: auto;
+    }
+    
+    .background-image{
+        width: 40%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.123);
+    }
+    
+    .login-form {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
     #telaGrande {
-        display: none;
+        display: block;
     }
     #telaMedio {
         display: none;
