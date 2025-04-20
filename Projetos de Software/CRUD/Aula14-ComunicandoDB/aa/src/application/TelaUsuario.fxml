@@ -42,7 +42,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAtualizarDados" mnemonicParsing="false" onAction="#OnClickAtualizarDados" text="Atualizar Dados" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="btnEntrar" mnemonicParsing="false" onAction="#OnClickEntrar" text="Entrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -77,7 +77,7 @@
                   <Insets top="-89.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="lblInicio" alignment="CENTER" prefHeight="17.0" prefWidth="560.0" text="Olá, Usuário">
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="560.0" text="Olá, Usuário">
                <font>
                   <Font size="18.0" />
                </font></Label>

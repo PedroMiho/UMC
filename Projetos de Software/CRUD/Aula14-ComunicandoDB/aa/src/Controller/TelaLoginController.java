@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.LoginUsuario;
+import model.Usuario;
 
 public class TelaLoginController {
 
@@ -27,25 +28,27 @@ public class TelaLoginController {
     private TextField txtSenha;
 
     @FXML
-    void OnClickEntrar(ActionEvent event) {
-    	try {
-            String login = this.txtLogin.getText();
-            String senha = this.txtSenha.getText();
+    void OnClickEntrar(ActionEvent event) throws IOException {
+        String login = this.txtLogin.getText();
+        String senha = this.txtSenha.getText();
 
-            // Enviar para o banco
-            LoginUsuario loginUsuario = new LoginUsuario();
-            String resultado = loginUsuario.verificarLogin(login, senha);
-          
-            
-            if (resultado.equals("sucesso")) {
-                System.out.println("✅ Login realizado com sucesso! Bem-vindo, " + login + "!");
-                
-            } else {
-                System.out.println("⚠️ " + resultado); // Exibe erro como "Senha inválida" ou "Login não encontrado"
-            }
+        LoginUsuario loginUsuario = new LoginUsuario();
+        Usuario usuario = loginUsuario.verificarLogin(login, senha);
 
-        } catch (NumberFormatException e) {
-            System.out.println("Erro ao converter número: " + e.getMessage());
+        if (usuario != null) {
+            System.out.println("✅ Login realizado com sucesso! Bem-vindo, " + usuario.getNome());
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TelaUsuario.fxml"));
+            Pane pane = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(pane);
+            stage.setScene(scene);
+            stage.setTitle("Tela do Usuário");
+            stage.show();
+
+        } else {
+            System.out.println("⚠️ Login ou senha inválidos!");
         }
     }
 

@@ -1,6 +1,5 @@
 package model;
 
-//Classe usuario
 public class Usuario {
 	
 	private int id;

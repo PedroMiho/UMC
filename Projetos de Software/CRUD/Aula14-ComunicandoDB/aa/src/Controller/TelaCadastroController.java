@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.CadastrarUsuario;
+import model.Usuario;
 
 public class TelaCadastroController {
     @FXML
@@ -37,8 +38,10 @@ public class TelaCadastroController {
             String senha = this.txtSenha.getText();
 
             // Enviar para o banco
-            CadastrarUsuario cadastro = new CadastrarUsuario();
-            cadastro.cadastrarUsuario(nome, login, senha);
+            Usuario novoUsuario = new Usuario(nome, login, senha);
+            
+            CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+            cadastrarUsuario.cadastrarUsuario(novoUsuario);
 
         } catch (NumberFormatException e) {
             System.out.println("Erro ao converter número: " + e.getMessage());

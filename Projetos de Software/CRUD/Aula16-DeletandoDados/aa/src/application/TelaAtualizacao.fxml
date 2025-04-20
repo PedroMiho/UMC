@@ -3,13 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaUsuarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelaAtualizacaoController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="500.0">
         <columnConstraints>
@@ -42,7 +43,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnAtualizarDados" mnemonicParsing="false" onAction="#OnClickAtualizarDados" text="Atualizar Dados" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="btnAtualizar" mnemonicParsing="false" onAction="#OnClickAtualizar" text="Atualizar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -52,20 +53,17 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblNomeUsuario" text="NomeUsuario" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
+                  <TextField fx:id="txtNome" GridPane.columnIndex="1">
                      <GridPane.margin>
-                        <Insets />
+                        <Insets left="25.0" right="25.0" />
                      </GridPane.margin>
-                  </Label>
-                  <Label fx:id="lblLoginUsuario" text="LoginUsuario" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblSenhaUsuario" text="SenhaUsuario" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  </TextField>
+                  <TextField fx:id="txtSenha" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label fx:id="txtLoginUsuario" text="LoginUsuario" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -77,7 +75,7 @@
                   <Insets top="-89.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="lblInicio" alignment="CENTER" prefHeight="17.0" prefWidth="560.0" text="Olá, Usuário">
+            <Label fx:id="lblInicio" alignment="CENTER" prefHeight="17.0" prefWidth="560.0" text="Tela de Atualização">
                <font>
                   <Font size="18.0" />
                </font></Label>

@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CadastrarUsuario {
-	 public void cadastrarUsuario(String nome, String login, String senha) {
+	 public void cadastrarUsuario(Usuario usuario) {
 	        String sql = "INSERT INTO usuario (nome, login, senha) VALUES (?, ?, ?)";
 
 	        try (Connection conn = ConexaoDB.conectar();
 	             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-	            stmt.setString(1, nome);
-	            stmt.setString(2, login);
-	            stmt.setString(3, senha);
+	            stmt.setString(1, usuario.getNome());
+	            stmt.setString(2, usuario.getLogin());
+	            stmt.setString(3, usuario.getSenha());
 
 	            stmt.executeUpdate();
 
