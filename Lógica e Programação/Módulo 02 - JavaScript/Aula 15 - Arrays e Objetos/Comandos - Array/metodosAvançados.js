@@ -5,9 +5,11 @@ const produtos = [
     { nome: "Cabo USB", preco: 30 }
 ];
 
-const total = produtos.reduce((soma, produto) => soma + produto.preco, 0);
+// const total = produtos.reduce((soma, produto) => soma + produto.preco, 0);
 
-console.log(`Total: R$ ${total}`);
+// console.log(`Total: R$ ${total}`);
+
+
 const produtosComDesconto = produtos.map(produto => ({
     nome: produto.nome,
     preco: produto.preco * 0.9  // Aplica 10% de desconto
