@@ -83,7 +83,8 @@
 
                 <div class="grupo">
                     <label for="produto">Produto:</label>
-                    <select name="cidade" id="produto" class="campo campo-medio">
+                    
+                    <select name="cidade" id="produto" onchange="alterar()" class="campo campo-medio">
                         <option value="Cenoura">Bolo Cenoura</option>
                         <option value="Chocolate">Bolo Chocolate</option>
                         <option value="Aipim">Bolo de Aipim</option>
@@ -107,7 +108,7 @@
 
 
 
-                <button id="adicionar-produto" class="bto-principal">Adicionar</button>
+                <button id="adicionar-produto" class="bto-principal" type="button" onclick="Adicionar()">Adicionar</button>
             </form>
         </section>
         

@@ -14,7 +14,8 @@ const valorInput = document.getElementById("valor");
 // Adiciona um evento sempre que o usuário trocar um produto
 // O evento change é acionado quando um elemento de formulário 
 // (como um <select>, <input> ou <textarea>) perde o foco após ter seu valor alterado.
-produtoSelect.addEventListener("change", function () {
+//Mostrar o HTML
+function alterar() {
     const produtoSelecionado = produtoSelect.value;
     console.log(precos[produtoSelecionado]);
     if (precos[produtoSelecionado]) {
@@ -22,5 +23,5 @@ produtoSelect.addEventListener("change", function () {
     } else {
         valorInput.value = ""; // Limpa o campo caso não haja um valor associado
     }
-});
+}
 
