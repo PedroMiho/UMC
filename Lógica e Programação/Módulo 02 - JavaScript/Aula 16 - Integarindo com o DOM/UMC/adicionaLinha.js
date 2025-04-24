@@ -1,4 +1,4 @@
-let pacientes = document.querySelectorAll(".produtos")
+// let pacientes = document.querySelectorAll(".produtos")
 
 var botao = document.querySelector("#adicionar-produto");
 //Mostrar o HTML
