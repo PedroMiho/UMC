@@ -13,7 +13,9 @@
     <div class="menu">
         <a href="crud/adicionar.php">Cadastro</a>
         <a href="crud/verificarCadastro.php">Verificar Cadastro</a>
-        <a href="crud/atualizarCadastro.php">Atualizar</a>
+        <a href="crud/atualizarCadastro.php">Atualizar Cadastro</a>
+        <a href="crud/verificarNota.php">Verificar Nota</a>
+        <a href="crud/atualizarNota.php">Atualizar Nota</a>
     </div>
 </body>
 </html>
