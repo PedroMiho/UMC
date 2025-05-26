@@ -18,6 +18,14 @@ public class Usuario {
     private String sobrenome;
     private String email;
 
+    // Construtor sem parâmetros
+    public Usuario() {}
 
+    // Construtor com parâmetros
+    public Usuario(String nome, String sobrenome, String email) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.email = email;
+    }
 
 }

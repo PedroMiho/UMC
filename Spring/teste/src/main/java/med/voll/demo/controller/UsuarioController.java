@@ -17,7 +17,7 @@ public class UsuarioController {
 
     @PostMapping
     public void cadastrarUsuario(@RequestBody DadosCadastroUsuario dados){
-        repository.save(new Usuario(null, dados.nome(), dados.sobrenome(), dados.email()));
+        repository.save(new Usuario(dados.nome(), dados.sobrenome(), dados.email()));
     }
 
 }
