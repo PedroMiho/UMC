@@ -46,6 +46,12 @@ main {
     margin: auto;
 }
 
+h1 {
+    margin: auto;
+    text-align: center;
+    background-color: blue;
+}
+
 #containerSection {
     width: 50%;
 }

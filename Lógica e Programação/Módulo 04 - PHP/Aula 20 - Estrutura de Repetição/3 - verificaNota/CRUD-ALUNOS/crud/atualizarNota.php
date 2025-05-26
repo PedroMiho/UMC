@@ -45,23 +45,26 @@
                 $sql = "SELECT * FROM usuarios WHERE curso = ?";
                 $stmt = $conn->prepare($sql);
 
-                if ($stmt) {
-                    $stmt->bind_param("s", $curso);
-                    $stmt->execute();
-                    $resultado = $stmt->get_result();
-
-                    if ($resultado->num_rows > 0) {
-
-                        $cursos = [
+                $cursos = [
                             'analise_desenvolvimento_sistemas' => 'Análise e Desenvolvimento de Sistemas',
                             'engenharia_software' => 'Engenharia de Software',
                             'ciencias_computacao' => 'Ciências da Computação',
                             'sistemas_informacao' => 'Sistemas da Informação'
                         ];
 
-                        $nomeCurso = $cursos[$curso];
+                $nomeCurso = $cursos[$curso];
+                echo "<h1> $nomeCurso </h1>";
 
-                        echo "<h1 style='text-align:center; margin-bottom: 0px'> $nomeCurso </h1>";
+                if ($stmt) {
+                    $stmt->bind_param("s", $curso);
+                    $stmt->execute();
+                    $resultado = $stmt->get_result();
+                    
+                    if ($resultado->num_rows > 0) {
+
+                        
+
+                        
 
                         echo " <form action='processaNota.php' method='post' id='form-nota'>
                                 <table>
@@ -102,7 +105,7 @@
                         "<input type='submit' value='Enviar'>
                                     </form>";
                     } else {
-                        echo "<div class='mensagem erro'>E-mail <strong>$curso</strong> não encontrado.</div>";
+                        echo "<div class='mensagem erro'>Curso não encontrado.</div>";
                     }
 
                     $stmt->close();

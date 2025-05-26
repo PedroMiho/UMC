@@ -20,21 +20,21 @@
         </nav>
     </header>
 
-<main>
+    <main>
 
-<section id="containerSection">
-<form action="atualizarNota.php" method="post">
-<select id="curso" name="curso" class="estilo">
-<option value="analise_desenvolvimento_sistemas">Análise e Desenvolvimento de Sistemas</option>
-<option value="engenharia_software">Engenharia de Software</option>
-<option value="ciencias_computacao">Ciências da Computação</option>
-<option value="sistemas_informacao">Sistemas da Informação</option>
-</select>
-<input type="submit" value="Buscar">
-</form>
+        <section id="containerSection">
+            <form action="atualizarNota.php" method="post">
+                <select id="curso" name="curso" class="estilo">
+                    <option value="analise_desenvolvimento_sistemas">Análise e Desenvolvimento de Sistemas</option>
+                    <option value="engenharia_software">Engenharia de Software</option>
+                    <option value="ciencias_computacao">Ciências da Computação</option>
+                    <option value="sistemas_informacao">Sistemas da Informação</option>
+                </select>
+                <input type="submit" value="Buscar">
+            </form>
 
-</section>
-<section>
+        </section>
+        <section>
 
             <?php
             if (isset($_POST['curso'])) {
@@ -51,6 +51,18 @@
                     $resultado = $stmt->get_result();
 
                     if ($resultado->num_rows > 0) {
+
+                        $cursos = [
+                            'analise_desenvolvimento_sistemas' => 'Análise e Desenvolvimento de Sistemas',
+                            'engenharia_software' => 'Engenharia de Software',
+                            'ciencias_computacao' => 'Ciências da Computação',
+                            'sistemas_informacao' => 'Sistemas da Informação'
+                        ];
+
+                        $nomeCurso = $cursos[$curso];
+
+                        echo "<h1 style='text-align:center; margin-bottom: 0px'> $nomeCurso </h1>";
+
                         echo " <form action='processaNota.php' method='post' id='form-nota'>
                                 <table>
                                     <thead>
@@ -63,7 +75,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>";
-                        
+
                         while ($row = $resultado->fetch_assoc()) {
                             // var_dump($row); // Depois do while: bool(false)
                             echo " 
