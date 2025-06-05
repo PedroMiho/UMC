@@ -29,6 +29,11 @@ form.addEventListener('submit', function(event) {
             mensagem.classList.remove('text-danger');
             mensagem.classList.add('text-success');
             form.reset();
+        }
+        else if (response.status === 409) {  // conflito: email já existe
+            mensagem.innerText = "❌ E-mail já cadastrado!";
+            mensagem.classList.remove('text-success');
+            mensagem.classList.add('text-danger');
         } else {
             mensagem.innerText = "❌ Erro ao cadastrar usuário.";
             mensagem.classList.remove('text-success');

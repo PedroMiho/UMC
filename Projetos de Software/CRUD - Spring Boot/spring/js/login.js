@@ -11,29 +11,35 @@ form.addEventListener('submit', function(event) {
         senha: senha
     };
 
-    fetch('http://localhost:8080/usuarios/login', {  // Substituir pela sua rota de autenticação
+    fetch('http://localhost:8080/usuarios/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(dados)
     })
-    .then(response => {
+    .then(async response => {
         const mensagem = document.getElementById('mensagem');
+        
         if (response.ok) {
-            mensagem.innerText = "✅ Login realizado com sucesso!";
-            mensagem.classList.remove('text-danger');
-            mensagem.classList.add('text-success');
+            const usuario = await response.json();
 
+            // Salva os dados no localStorage
+            localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+
+            // Redireciona para a página de perfil
+            window.location.href = 'perfil.html';
         } else {
-            mensagem.innerText = "❌ Email ou senha inválidos!";
+            const erro = await response.text();
+            mensagem.innerText = `❌ ${erro || 'Email ou senha inválidos!'}`;
             mensagem.classList.remove('text-success');
             mensagem.classList.add('text-danger');
+            throw new Error(erro);
         }
     })
     .catch(error => {
         const mensagem = document.getElementById('mensagem');
-        mensagem.innerText = "❌ Erro na requisição: " + error.message;
+        mensagem.innerText = `❌ Erro na requisição: ${error.message}`;
         mensagem.classList.remove('text-success');
         mensagem.classList.add('text-danger');
     });
