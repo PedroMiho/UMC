@@ -71,7 +71,7 @@ body {
 
 
 main {
-    min-height: 50vh;
+    min-height: 60vh;
 }
 
 main > h2 {
@@ -130,14 +130,14 @@ main > div > div > a {
 }
 
   
+/* Estilo do rodapé */
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    text-align: center;
-    padding: 20px;
-    background-color: var(--cor-rodape);
-    color: white;
-    margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #333; /* Cor cinza escuro, como na imagem */
+  color: white;
+  margin-top: 20px;
+  position: fixed; /* Mudado de 'fixed' para 'relative' para não sobrepor o conteúdo */
+  bottom: 0;
 }
-  
