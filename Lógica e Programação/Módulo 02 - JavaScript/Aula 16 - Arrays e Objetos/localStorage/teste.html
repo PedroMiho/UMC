@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Produtos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Cadastrar Produto</h2>
+  <div class="form-container">
+    <input type="text" id="nome" placeholder="Nome do Produto" required>
+    <input type="number" id="preco" placeholder="Preço" required>
+    <textarea id="descricao" placeholder="Descrição do Produto"></textarea>
+    <input type="text" id="imagem" placeholder="URL da Imagem">
+    <button onclick="adicionarProduto()">Adicionar Produto</button>
+  </div>
+
+  <h2>Produtos</h2>
+  <section class="produtos" id="produtos"></section>
+
+  <script>
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+    function adicionarProduto() {
+      const nome = document.getElementById("nome").value;
+      const preco = document.getElementById("preco").value;
+      const descricao = document.getElementById("descricao").value;
+      const imagem = document.getElementById("imagem").value;
+
+      if (nome && preco && descricao && imagem) {
+        const produto = {
+          nome,
+          preco: parseFloat(preco).toFixed(2),
+          descricao,
+          imagem
+        };
+
+        produtos.push(produto);
+        localStorage.s  tem("produtos", JSON.stringify(produtos));
+
+        mostrarProdutos();
+        limparFormulario();
+      } else {
+        alert("Preencha todos os campos!");
+      }
+    }
+
+    function mostrarProdutos() {
+      const container = document.getElementById("produtos");
+      container.innerHTML = "";
+
+      produtos.forEach(produto => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+          <img src="${produto.imagem}" alt="${produto.nome}">
+          <h3>${produto.nome}</h3>
+          <p class="preco">R$ ${produto.preco}</p>
+          <p>${produto.descricao}</p>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function limparFormulario() {
+      document.getElementById("nome").value = "";
+      document.getElementById("preco").value = "";
+      document.getElementById("descricao").value = "";
+      document.getElementById("imagem").value = "";
+    }
+
+    mostrarProdutos();
+  </script>
+</body>
+</html>
