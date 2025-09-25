@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Alunos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    ul {
+      margin-top: 15px;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      background: #eee;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Gerenciamento de Alunos</h2>
+    <input type="text" id="nome" placeholder="Nome do aluno">
+    <input type="number" id="idade" placeholder="Idade">
+    <input type="text" id="curso" placeholder="Curso">
+    <button onclick="adicionarAluno()">Adicionar</button>
+    <button onclick="listarAlunos()">Listar</button>
+    <ul id="listaAlunos"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
