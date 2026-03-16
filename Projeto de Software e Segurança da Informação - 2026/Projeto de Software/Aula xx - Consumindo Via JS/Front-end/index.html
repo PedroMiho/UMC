@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>ProductHub</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    background:#e9e9e9;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+main{
+    flex:1;
+    display:flex;
+    align-items:center;
+}
+
+/* CARDS */
+
+.card-menu{
+    border-radius:16px;
+    padding:40px;
+    color:white;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card-menu:hover{
+    transform:scale(1.05);
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+/* NOVA PALETA */
+
+.card-cadastro{
+    background:#343a40;
+}
+
+.card-lista{
+    background:#343a40;
+}
+
+/* FOOTER */
+
+footer{
+    background:#212529;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<nav class="navbar navbar-dark bg-dark">
+<div class="container">
+
+<span class="navbar-brand mb-0 h1">
+<i class="fa-solid fa-store"></i> ProductHub
+</span>
+
+</div>
+</nav>
+
+
+<!-- CONTEÚDO -->
+<main>
+
+<div class="container">
+
+<div class="row justify-content-center g-4 text-center">
+
+<!-- CADASTRAR PRODUTO -->
+<div class="col-md-4">
+
+<a href="paginas/cadastro.html" style="text-decoration:none">
+
+<div class="card-menu card-cadastro">
+
+<div class="icon">
+<i class="fa-solid fa-box"></i>
+</div>
+
+<h4>Cadastrar Produto</h4>
+<p>Adicionar novos produtos ao sistema</p>
+
+</div>
+
+</a>
+
+</div>
+
+
+<!-- LISTAR PRODUTOS -->
+<div class="col-md-4">
+
+<a href="paginas/produtos.html" style="text-decoration:none">
+
+<div class="card-menu card-lista">
+
+<div class="icon">
+<i class="fa-solid fa-list"></i>
+</div>
+
+<h4>Listar Produtos</h4>
+<p>Visualizar produtos cadastrados</p>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+<p>© 2026 ProductHub - Sistema de Gerenciamento de Produtos</p>
+
+</footer>
+
+</body>
+</html>
