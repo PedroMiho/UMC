@@ -9,6 +9,11 @@ public class Cachorro extends Animal{
         this.raca = raca;
     }
 
+    public Cachorro(int idade, double peso, String raca) {
+        super(idade, peso);
+        this.raca = raca;
+    }
+
     public String getRaca() {
         return raca;
     }

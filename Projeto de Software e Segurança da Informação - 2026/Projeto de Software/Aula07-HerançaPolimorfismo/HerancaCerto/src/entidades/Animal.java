@@ -1,5 +1,7 @@
 package entidades;
 
+import java.lang.reflect.AnnotatedArrayType;
+
 public abstract class Animal {
     private String nome;
     private int idade;
@@ -7,6 +9,11 @@ public abstract class Animal {
 
     public Animal(String nome, int idade, double peso) {
         this.nome = nome;
+        this.idade = idade;
+        this.peso = peso;
+    }
+
+    public Animal(int idade, double peso) {
         this.idade = idade;
         this.peso = peso;
     }
