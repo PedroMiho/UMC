@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProductHub — Cadastrar Produto</title>
+
+  <!-- Bootstrap 5 via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome via CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="../css/estiloCadastrar.css" />
+</head>
+<body>
+
+  <!-- ===================================================
+       HEADER — Navbar principal
+  =================================================== -->
+  <header>
+    <nav class="navbar navbar-dark navbar-main px-4 py-3">
+
+      <!-- Nome clicável do sistema -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+        <span class="brand-icon">
+          <i class="fa-solid fa-cubes-stacked"></i>
+        </span>
+        <span class="brand-name">ProductHub</span>
+      </a>
+
+      <!-- Botões de navegação -->
+      <div class="d-flex gap-2">
+        <a href="../index.html" class="btn btn-nav">
+          <i class="fa-solid fa-house me-1"></i>Home
+        </a>
+        <a href="produtos.html" class="btn btn-nav btn-nav-accent">
+          <i class="fa-solid fa-list-check me-1"></i>Produtos
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- ===================================================
+       CONTEÚDO PRINCIPAL
+  =================================================== -->
+  <main class="main-content d-flex align-items-center justify-content-center py-5">
+    <div class="form-card">
+
+      <!-- Cabeçalho do card -->
+      <div class="form-card-header mb-4">
+        <span class="form-card-icon">
+          <i class="fa-solid fa-box-open"></i>
+        </span>
+        <div>
+          <p class="section-label">GERENCIAMENTO</p>
+          <h1 class="page-title">Cadastrar Produto</h1>
+        </div>
+      </div>
+
+      <!-- -----------------------------------------------
+           Alerta de feedback (oculto por padrão)
+           Exibido via JavaScript após cadastro
+      ----------------------------------------------- -->
+      <div id="alerta-sucesso" class="alert-sucesso d-none" role="alert">
+        <i class="fa-solid fa-circle-check me-2"></i>
+        <span id="alerta-mensagem">Produto cadastrado com sucesso!</span>
+      </div>
+
+      <!-- -----------------------------------------------
+           Formulário de cadastro
+           Sem action/method pois é tratado inteiramente via JS
+      ----------------------------------------------- -->
+      <form id="form-cadastro" novalidate>
+
+        <!-- Linha 1: Nome e Marca -->
+        <div class="row g-3">
+
+          <!-- Campo: Nome do Produto -->
+          <div class="col-12 col-md-6">
+            <label for="nome" class="form-label">
+              Nome do Produto <span class="required">*</span>
+            </label>
+            <div class="input-group-custom">
+              <i class="fa-solid fa-tag input-icon"></i>
+              <input
+                type="text"
+                class="form-control form-input"
+                id="nome"
+                name="nome"
+                placeholder="Ex: Notebook Gamer"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <!-- Mensagem de erro de validação -->
+            <div class="invalid-msg" id="erro-nome"></div>
+          </div>
+
+          <!-- Campo: Marca -->
+          <div class="col-12 col-md-6">
+            <label for="marca" class="form-label">
+              Marca <span class="required">*</span>
+            </label>
+            <div class="input-group-custom">
+              <i class="fa-solid fa-building input-icon"></i>
+              <input
+                type="text"
+                class="form-control form-input"
+                id="marca"
+                name="marca"
+                placeholder="Ex: Dell"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="invalid-msg" id="erro-marca"></div>
+          </div>
+
+        </div><!-- /row 1 -->
+
+        <!-- Linha 2: Tamanho, Preço e Quantidade -->
+        <div class="row g-3 mt-0">
+
+          <!-- Campo: Tamanho -->
+          <div class="col-12 col-md-4">
+            <label for="tamanho" class="form-label">Tamanho</label>
+            <div class="input-group-custom">
+              <i class="fa-solid fa-ruler input-icon"></i>
+              <select class="form-select form-input" id="tamanho" name="tamanho">
+                <option value="P">P — Pequeno</option>
+                <option value="M" selected>M — Médio</option>
+                <option value="G">G — Grande</option>
+                <option value="GG">GG — Extra Grande</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Campo: Preço -->
+          <div class="col-12 col-md-4">
+            <label for="preco" class="form-label">
+              Preço (R$) <span class="required">*</span>
+            </label>
+            <div class="input-group-custom">
+              <i class="fa-solid fa-money-bill-wave input-icon"></i>
+              <input
+                type="number"
+                class="form-control form-input"
+                id="preco"
+                name="preco"
+                placeholder="0.00"
+                min="0.01"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="invalid-msg" id="erro-preco"></div>
+          </div>
+
+          <!-- Campo: Quantidade -->
+          <div class="col-12 col-md-4">
+            <label for="quantidade" class="form-label">
+              Quantidade <span class="required">*</span>
+            </label>
+            <div class="input-group-custom">
+              <i class="fa-solid fa-cubes input-icon"></i>
+              <input
+                type="number"
+                class="form-control form-input"
+                id="quantidade"
+                name="quantidade"
+                placeholder="0"
+                min="1"
+                step="1"
+                required
+              />
+            </div>
+            <div class="invalid-msg" id="erro-quantidade"></div>
+          </div>
+
+        </div><!-- /row 2 -->
+
+        <!-- Linha 3: Botões de ação -->
+        <div class="row g-3 mt-1">
+          <div class="col-12 d-flex gap-3 justify-content-end flex-wrap">
+
+            <!-- Botão secundário: Ver Produtos -->
+            <a href="produtos.html" class="btn btn-secondary-custom">
+              <i class="fa-solid fa-list-check me-2"></i>Ver Produtos
+            </a>
+
+            <!-- Botão primário: Cadastrar -->
+            <button type="submit" class="btn btn-primary-custom" id="btn-cadastrar">
+              <i class="fa-solid fa-floppy-disk me-2"></i>Cadastrar Produto
+            </button>
+
+          </div>
+        </div><!-- /row 3 -->
+
+      </form><!-- /form-cadastro -->
+
+    </div><!-- /form-card -->
+  </main>
+
+  <!-- ===================================================
+       FOOTER — Rodapé
+  =================================================== -->
+  <footer class="site-footer">
+    <p class="footer-text">
+      <i class="fa-regular fa-copyright me-1"></i>
+      2026 ProductHub — Sistema de Gerenciamento de Produtos
+    </p>
+  </footer>
+
+  <!-- Bootstrap 5 JS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script da página de cadastro (carregado no final do body) -->
+  <script src="../js/cadastro.js"></script>
+</body>
+</html>
