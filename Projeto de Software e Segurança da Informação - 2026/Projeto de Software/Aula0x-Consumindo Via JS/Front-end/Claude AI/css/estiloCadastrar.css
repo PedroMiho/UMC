@@ -1,0 +1,456 @@
+/* =====================================================
+   ProductHub — style.css
+   Estilos compartilhados: Lista de Produtos + Cadastro
+   ===================================================== */
+
+/* ----------------------------
+   1. Variáveis e Reset Global
+   ---------------------------- */
+:root {
+  --color-bg:             #ffffff;
+  --color-dark:           #212529;
+  --color-navbar:         #1a1d20;
+  --color-card:           #f8f9fa;
+  --color-card-border:    #e9ecef;
+  --color-accent:         #5e9bfc;
+  --color-accent2:        #3ecf8e;
+  --color-danger:         #dc3545;
+  --color-success-bg:     #d1fae5;
+  --color-success-border: #6ee7b7;
+  --color-success-text:   #065f46;
+  --color-muted:          #6c757d;
+  --color-label:          #343a40;
+  --color-border:         #dee2e6;
+  --color-input-focus:    rgba(94, 155, 252, 0.25);
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --radius-card:  16px;
+  --radius-input: 10px;
+  --transition:   0.25s ease;
+  --shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card:  0 4px 32px rgba(0, 0, 0, 0.10);
+  --shadow-md:    0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-focus: 0 0 0 3px var(--color-input-focus);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----------------------------
+   2. Layout Geral (Flexbox)
+   Empilha header → main → footer
+   ---------------------------- */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ----------------------------
+   3. Navbar / Header
+   ---------------------------- */
+.navbar-main {
+  background-color: var(--color-navbar);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent2));
+  font-size: 0.95rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.btn-nav {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 6px 14px;
+  transition: background var(--transition), color var(--transition);
+  text-decoration: none;
+}
+
+.btn-nav:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+/* Variação azul (página produtos) */
+.btn-nav-accent-blue {
+  color: var(--color-accent);
+  border-color: rgba(94, 155, 252, 0.35);
+  background: rgba(94, 155, 252, 0.08);
+}
+.btn-nav-accent-blue:hover {
+  background: rgba(94, 155, 252, 0.18);
+  color: var(--color-accent);
+}
+
+/* Variação verde (página cadastro) */
+.btn-nav-accent {
+  color: var(--color-accent2);
+  border-color: rgba(62, 207, 142, 0.35);
+  background: rgba(62, 207, 142, 0.08);
+}
+.btn-nav-accent:hover {
+  background: rgba(62, 207, 142, 0.18);
+  color: var(--color-accent2);
+}
+
+/* ----------------------------
+   4. Conteúdo Principal (compartilhado)
+   ---------------------------- */
+.main-content {
+  flex: 1;
+}
+
+/* --- Cabeçalho de seção --- */
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: 0.25rem;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--color-dark);
+  line-height: 1.1;
+}
+
+/* Badge de contagem (lista de produtos) */
+.records-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent2);
+  background: rgba(62, 207, 142, 0.1);
+  border: 1px solid rgba(62, 207, 142, 0.3);
+  border-radius: 999px;
+  padding: 5px 14px;
+  white-space: nowrap;
+}
+
+/* ----------------------------
+   5. Tabela (lista de produtos)
+   ---------------------------- */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.table-wrapper .table {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.col-id { width: 60px; text-align: center; }
+
+#tbody-produtos td:first-child {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.valor-estoque {
+  font-weight: 700;
+  color: #198754;
+}
+
+#tbody-produtos tr {
+  transition: background-color var(--transition);
+}
+
+/* Estado vazio (lista de produtos) */
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: var(--color-muted);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+.empty-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #495057;
+  margin-bottom: 0.35rem;
+}
+
+.empty-sub { font-size: 0.875rem; }
+
+/* ----------------------------
+   6. Card do Formulário (cadastro)
+   ---------------------------- */
+.form-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 2.25rem 2.5rem;
+  width: 100%;
+  max-width: 760px;
+}
+
+.form-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.form-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(94, 155, 252, 0.12);
+  color: var(--color-accent);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+/* ----------------------------
+   7. Alerta de Sucesso
+   ---------------------------- */
+.alert-sucesso {
+  display: flex;
+  align-items: center;
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  color: var(--color-success-text);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  animation: slideDown 0.35s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------------------
+   8. Labels e Inputs (cadastro)
+   ---------------------------- */
+.form-label {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--color-label);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.required {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+.input-group-custom {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.form-input {
+  border: 1.5px solid var(--color-card-border);
+  border-radius: var(--radius-input);
+  padding: 0.55rem 0.9rem 0.55rem 2.2rem;
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+  background-color: #fff;
+  color: var(--color-dark);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-focus);
+}
+
+.form-input.is-invalid {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+.form-input.is-valid {
+  border-color: var(--color-accent2);
+  box-shadow: 0 0 0 3px rgba(62, 207, 142, 0.15);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
+
+/* ----------------------------
+   9. Mensagens de validação
+   ---------------------------- */
+.invalid-msg {
+  font-size: 0.76rem;
+  color: var(--color-danger);
+  margin-top: 4px;
+  min-height: 16px;
+  font-weight: 500;
+}
+
+/* ----------------------------
+   10. Botões de ação
+   ---------------------------- */
+.btn-action,
+.btn-primary-custom {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-accent), #3b7de8);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  box-shadow: 0 4px 14px rgba(94, 155, 252, 0.35);
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-action:hover,
+.btn-primary-custom:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(94, 155, 252, 0.5);
+}
+
+.btn-action:active,
+.btn-primary-custom:active {
+  transform: translateY(0);
+}
+
+.btn-primary-custom:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary-custom {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  background: #fff;
+  border: 1.5px solid var(--color-card-border);
+  border-radius: 10px;
+  padding: 10px 24px;
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  display: inline-block;
+}
+
+.btn-secondary-custom:hover {
+  background: #f1f3f5;
+  border-color: #ced4da;
+  color: var(--color-dark);
+}
+
+/* ----------------------------
+   11. Footer
+   ---------------------------- */
+.site-footer {
+  background-color: var(--color-dark);
+  text-align: center;
+  padding: 1rem 1.5rem;
+}
+
+.footer-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ----------------------------
+   12. Responsividade
+   ---------------------------- */
+@media (max-width: 576px) {
+  .form-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .form-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .btn-primary-custom,
+  .btn-secondary-custom {
+    width: 100%;
+    text-align: center;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-content {
+    padding: 2rem 1rem;
+  }
+}
