@@ -98,27 +98,45 @@ Cadastrar Novo Produto
 
 <script>
 
-let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+async function carregarProdutos(){
 
-let tabela = document.getElementById("tabelaProdutos");
+    try {
 
-produtos.forEach((produto, index) => {
+        let resposta = await fetch("http://localhost:8080/produtos");
 
-let valorEstoque = produto.preco * produto.quantidade;
+        let produtos = await resposta.json();
 
-tabela.innerHTML += `
-<tr>
-<td>${index}</td>
-<td>${produto.nome}</td>
-<td>${produto.marca}</td>
-<td>${produto.tamanho}</td>
-<td>R$ ${produto.preco}</td>
-<td>${produto.quantidade}</td>
-<td>R$ ${valorEstoque}</td>
-</tr>
-`;
+        let tabela = document.getElementById("tabelaProdutos");
 
-});
+        tabela.innerHTML = "";
+
+        produtos.forEach((produto, index) => {
+
+            let valorEstoque = produto.preco * produto.quantidade;
+
+            tabela.innerHTML += `
+            <tr>
+                <td>${index}</td>
+                <td>${produto.nome}</td>
+                <td>${produto.marca}</td>
+                <td>${produto.tamanho}</td>
+                <td>R$ ${produto.preco}</td>
+                <td>${produto.quantidade}</td>
+                <td>R$ ${valorEstoque}</td>
+            </tr>
+            `;
+
+        });
+
+    } catch (erro) {
+        console.error("Erro ao buscar produtos:", erro);
+        alert("Erro ao carregar produtos!");
+    }
+
+}
+
+// chama a função ao carregar a página
+carregarProdutos();
 
 </script>
 
