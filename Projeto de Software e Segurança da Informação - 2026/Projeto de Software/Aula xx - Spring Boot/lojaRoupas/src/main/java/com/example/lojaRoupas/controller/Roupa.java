@@ -2,6 +2,8 @@ package com.example.lojaRoupas.controller;
 
 
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
@@ -15,7 +17,12 @@ public class Roupa {
     }
 
     @PostMapping
-    public void teste(){
-        System.out.println("teste");
+    public ResponseEntity<Boolean> teste() {
+        try {
+            // lógica de cadastro aqui
+            return ResponseEntity.ok(true); // 200 OK
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+        }
     }
 }
