@@ -1,0 +1,8 @@
+{
+	"id" : 12,
+	"nomeProduto": "Camisa",
+	"marca":"Lacoste",
+	"tamanho":"P",
+	"preco" : 10.0,
+	"quantidade": 5
+}
