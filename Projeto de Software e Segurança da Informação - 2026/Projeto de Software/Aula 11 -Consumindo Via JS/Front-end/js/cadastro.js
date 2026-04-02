@@ -39,24 +39,25 @@ form.addEventListener('submit' , function(event) {
         
         
         if (response.ok){
-            mensagem.innerHTML = 
-                `
-                <div class="alert alert-success">
-                    Produto cadastrado com sucesso!
-                </div>
-                `;
+            mensagem.innerHTML = ""
+            Swal.fire({
+                title: "ROUPA CADASTRADA COM SUCESSO",
+                text: "ROUPA CADASTRADA",
+                icon: "success"
+            });
         } else {
             // ❌ Erro da API
-            mensagem.innerHTML = `
-                <div class="alert alert-danger">
-                    Erro ao cadastrar produto (Status: ${response.status}) ❌
-                </div>
-            `;
+            mensagem.innerHTML = ""
+            Swal.fire({
+                title: "NÃO FOI POSSÍVEL CADASTRAR A ROUPA",
+                text: "ROUPA NÃO CADASTRADA",
+                icon: "error"
+            });
         }
             
     })
     .catch(erro => {
-
+            
          mensagem.innerHTML = `
             <div class="alert alert-danger">
                Falha na comunicação com o servidor ${erro}
