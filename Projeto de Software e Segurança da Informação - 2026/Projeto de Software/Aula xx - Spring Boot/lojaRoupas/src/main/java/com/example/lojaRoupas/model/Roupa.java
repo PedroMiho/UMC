@@ -11,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
 public class Roupa {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +25,14 @@ public class Roupa {
 
 
     public Roupa(DadosCadastroRoupa dados) {
+        this.nomeProduto = dados.nomeProduto();
+        this.marca = dados.marca();
+        this.tamanho = dados.tamanho();
+        this.preco = dados.preco();
+        this.quantidade = dados.quantidade();
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoPagamento dados) {
         this.nomeProduto = dados.nomeProduto();
         this.marca = dados.marca();
         this.tamanho = dados.tamanho();
