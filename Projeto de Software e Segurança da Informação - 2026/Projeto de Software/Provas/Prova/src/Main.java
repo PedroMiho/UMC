@@ -1,8 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        // --- LACUNA 2: Instanciação do objeto ---
-
-        d1.exibirFicha();
+        Conta minhaConta = new Conta(1000.0);
+        System.out.println(minhaConta.saldo); // Linha com erro
     }
 }
