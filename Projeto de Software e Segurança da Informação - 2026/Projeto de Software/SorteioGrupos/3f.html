@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Sorteio de Grupos</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #141e30, #243b55);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        color: rgba(255,255,255,0.55);
+        margin-bottom: 40px;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 32px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #00c9a7;
+        color: #fff;
+        transition: background 0.2s, transform 0.1s;
+        box-shadow: 0 4px 20px rgba(0,201,167,0.3);
+        margin-bottom: 48px;
+    }
+
+    button:hover { background: #00a78e; }
+    button:active { transform: scale(0.97); }
+    button:disabled { opacity: 0.5; cursor: default; transform: none; }
+
+    .list {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 16px 20px;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .numero {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(0,201,167,0.15);
+        border: 1px solid rgba(0,201,167,0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: 600;
+        color: #00c9a7;
+        flex-shrink: 0;
+    }
+
+    .texto {
+        font-size: 15px;
+        color: rgba(255,255,255,0.9);
+        line-height: 1.5;
+    }
+
+    .empty {
+        color: rgba(255,255,255,0.4);
+        font-size: 14px;
+        margin-top: -24px;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎯 Sorteio de Grupos</h1>
+<p class="subtitle">Segurança da Informação — ISO 27001 / 27002</p>
+
+<button id="btn" onclick="sortear()">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 4h8M2 8h5M2 12h3M10 2l4 4-4 4M14 6v6a1 1 0 01-1 1H4" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Realizar sorteio
+</button>
+
+<div class="list" id="lista">
+    <p class="empty">Clique em <strong>Realizar sorteio</strong> para começar.</p>
+</div>
+
+<script>
+const grupos = [
+    "Fundamentos da Segurança da Informação e ISO 27001",
+    "ISO 27002: Controles Organizacionais, de Pessoas e Físicos",
+    "ISO 27002: Controles Tecnológicos e Anexo A",
+    "Operação, Suporte e Melhoria Contínua do SGSI",
+    "Contexto, Liderança e Planejamento do SGSI"
+];
+
+function embaralhar(arr) {
+    let a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function sortear() {
+    const lista = document.getElementById("lista");
+    const btn = document.getElementById("btn");
+    lista.innerHTML = "";
+    btn.disabled = true;
+
+    const sorteados = embaralhar(grupos);
+
+    sorteados.forEach((grupo, i) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <div class="numero">${i + 1}</div>
+            <div class="texto">${grupo}</div>
+        `;
+        lista.appendChild(card);
+        setTimeout(() => card.classList.add("visible"), 80 + i * 130);
+    });
+
+    setTimeout(() => { btn.disabled = false; }, 80 + sorteados.length * 130 + 400);
+}
+</script>
+
+</body>
+</html>
