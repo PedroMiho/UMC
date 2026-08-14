@@ -10,7 +10,7 @@ public record DadosListagemDentista(
         Especialidade especialidade
 ) {
 
-    public  DadosListagemDentista(Dentista dentista){
+    public DadosListagemDentista(Dentista dentista){
         this(dentista.getNome(), dentista.getEmail(), dentista.getCro(), dentista.getEspecialidade());
     }
 }
