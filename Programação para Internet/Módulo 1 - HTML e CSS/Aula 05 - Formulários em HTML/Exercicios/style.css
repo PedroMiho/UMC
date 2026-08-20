@@ -1,0 +1,8 @@
+input,button,textarea,select{
+    display: block;
+    margin: 10px;
+}
+
+.radio {
+    display: inline;
+}
