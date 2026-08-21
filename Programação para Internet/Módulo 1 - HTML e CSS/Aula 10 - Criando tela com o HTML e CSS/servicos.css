@@ -1,0 +1,307 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #f5f6f8;
+
+    color: #182238;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    height: 73px;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #dfe2e8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 43px;
+}
+
+
+/* LOGO */
+
+.logo {
+    color: #5146e5;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+/* MENU */
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 34px;
+}
+
+.menu a {
+    text-decoration: none;
+
+    color: #69738a;
+
+    font-size: 14px;
+}
+
+.menu a:hover {
+    color: #5146e5;
+}
+
+.menu a.active {
+    color: #182238;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 39px 38px 80px;
+}
+
+
+/* =========================
+   INTRODUÇÃO
+========================= */
+
+.intro {
+    margin-bottom: 39px;
+}
+
+.intro h1 {
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.intro p {
+    font-size: 14px;
+
+    color: #68738b;
+}
+
+
+/* =========================
+   GRID DE SERVIÇOS
+========================= */
+
+.services {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 23px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.service-card {
+    position: relative;
+
+    height: 145px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #dfe2e8;
+
+    border-radius: 14px;
+
+    padding: 19px 18px;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.service-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================
+   ÍCONE
+========================= */
+
+.service-icon {
+    width: 22px;
+
+    height: 22px;
+
+    color: #5146e5;
+
+    margin-bottom: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.service-icon svg {
+    width: 22px;
+
+    height: 22px;
+}
+
+.service-icon.gear {
+    font-size: 21px;
+
+    line-height: 1;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.service-card h2 {
+    font-size: 16px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   INFORMAÇÕES
+========================= */
+
+.service-card p {
+    color: #68738b;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.service-card button {
+    position: absolute;
+
+    right: 22px;
+
+    bottom: 17px;
+
+    width: 112px;
+
+    height: 38px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background-color: #5146e5;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+}
+
+.service-card button:hover {
+    background-color: #4036c8;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 850px) {
+
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    .intro h1 {
+        font-size: 24px;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        height: 145px;
+    }
+
+}
