@@ -1,27 +1,32 @@
 void main() {
-  Filme filme = Filme();
-  filme.titulo = "Homem-Aranha: Um novo dia";
-  filme.genero = "Ação";
-  filme.classificacao = 12;
-  filme.duracao = 145;
+  Filme filme = Filme(
+    titulo: "Homem-Aranha: Um novo dia",
+    genero: "Ação",
+    classificacao: 12,
+    duracao: 145
+  );
 
-  filme.infoFilme();
+  filme.exibirInformacoes();
 
-  print(filme.podeAssistir(15));
+
 }
 
 
 class Filme {
-  String titulo = "";
-  String genero = "";
-  int classificacao = 0;
-  int duracao = 0 ;
+  String titulo;
+  String genero;
+  int classificacao;
+  int duracao;
 
-  void infoFilme() {
-    print("titulo $titulo, Gênero $genero,classificação $classificacao e tem duração de $duracao");
+  Filme({
+    required this.titulo,
+    required this.classificacao,
+    required this.duracao,
+    required this.genero
+  });
+
+  void exibirInformacoes(){
+    print("Filme $titulo , genero $genero, classificação $classificacao e duracao de $duracao");
   }
-  
-  bool podeAssistir(int idade) { 
-    return idade >= classificacao;
-  } 	
+
 }
