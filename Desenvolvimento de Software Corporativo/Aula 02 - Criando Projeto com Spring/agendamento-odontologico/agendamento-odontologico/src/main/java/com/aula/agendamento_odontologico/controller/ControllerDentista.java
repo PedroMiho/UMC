@@ -29,7 +29,7 @@ public class ControllerDentista {
 
     @GetMapping
     public Page<DadosListagemDentista> listaDentista(Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemDentista::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemDentista::new);
     }
 
     @PutMapping
@@ -42,6 +42,7 @@ public class ControllerDentista {
     @DeleteMapping("{id}")
     @Transactional
     public void removerDentista(@PathVariable Long id){
-        repository.deleteById(id);
+        var dentista = repository.getReferenceById(id);
+        dentista.atualizarStatus();
     }
 }
