@@ -1,5 +1,6 @@
 package com.aula.agendamento_odontologico.controller;
 
+import com.aula.agendamento_odontologico.dto.DadosAtualizacaoDentista;
 import com.aula.agendamento_odontologico.dto.DadosCadastroDentista;
 import com.aula.agendamento_odontologico.dto.DadosListagemDentista;
 import com.aula.agendamento_odontologico.model.Dentista;
@@ -29,5 +30,18 @@ public class ControllerDentista {
     @GetMapping
     public Page<DadosListagemDentista> listaDentista(Pageable paginacao){
         return repository.findAll(paginacao).map(DadosListagemDentista::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void alterarDadosDenstista(@RequestBody @Valid DadosAtualizacaoDentista dadosDentista){
+        var dentista = repository.getReferenceById(dadosDentista.id());
+        dentista.alterarDados(dadosDentista);
+    }
+
+    @DeleteMapping("{id}")
+    @Transactional
+    public void removerDentista(@PathVariable Long id){
+        repository.deleteById(id);
     }
 }

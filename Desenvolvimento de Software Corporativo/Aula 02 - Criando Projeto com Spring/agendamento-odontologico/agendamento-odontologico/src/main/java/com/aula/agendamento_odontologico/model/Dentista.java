@@ -1,8 +1,10 @@
 package com.aula.agendamento_odontologico.model;
 
+import com.aula.agendamento_odontologico.dto.DadosAtualizacaoDentista;
 import com.aula.agendamento_odontologico.dto.DadosCadastroDentista;
 import com.aula.agendamento_odontologico.enums.Especialidade;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
 
 @Table(name = "dentista")
@@ -21,16 +23,26 @@ public class Dentista {
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
     @Embedded
-    private Endereco Endereco;
+    private Endereco endereco;
 
     public Dentista(DadosCadastroDentista dadosDentista) {
         this.nome = dadosDentista.nome();
         this.email = dadosDentista.email();
         this.cro = dadosDentista.cro();
         this.especialidade = dadosDentista.especialidade();
-        this.Endereco = new Endereco(dadosDentista.endereco());
+        this.endereco = new Endereco(dadosDentista.endereco());
 
 
 
+    }
+
+    public void alterarDados(DadosAtualizacaoDentista dadosDentista) {
+        if (dadosDentista.nome() != null){
+            this.nome = dadosDentista.nome();
+        }
+
+        if (dadosDentista.endereco() != null) {
+            this.endereco.atualizarInformacao(dadosDentista.endereco());
+        }
     }
 }
