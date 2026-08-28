@@ -3,7 +3,7 @@ package com.aula.agendamento_odontologico.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record Endereco(
+public record DtoEndereco(
         @NotBlank
         String logradouro,
         @NotBlank
