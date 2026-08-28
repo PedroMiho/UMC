@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/dentista")
@@ -40,8 +41,9 @@ public class ControllerDentista {
 
     @DeleteMapping("{id}")
     @Transactional
-    public void excluirDentista(@PathVariable Long id) {
+    public ResponseEntity excluirDentista(@PathVariable Long id) {
         repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
