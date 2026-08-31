@@ -30,9 +30,7 @@ public class ControllerDentista {
     public ResponseEntity cadastrarDentista(@RequestBody @Valid  DadosCadastroDentista dadosDentista, UriComponentsBuilder uriBuilder) {
         var dentista = new Dentista(dadosDentista);
         repository.save(dentista);
-
         var uri = uriBuilder.path("/dentista/{id}").buildAndExpand(dentista.getId()).toUri();
-
         return ResponseEntity.created(uri).body(new DadosDetalhamentoDentista(dentista));
     }
 
@@ -47,9 +45,7 @@ public class ControllerDentista {
     public ResponseEntity alterarDadosDenstista(@RequestBody @Valid DadosAtualizacaoDentista dadosDentista){
         var dentista = repository.getReferenceById(dadosDentista.id());
         dentista.alterarDados(dadosDentista);
-
         return ResponseEntity.ok(new DadosDetalhamentoDentista(dentista));
-
     }
 
     @DeleteMapping("{id}")
@@ -57,12 +53,12 @@ public class ControllerDentista {
     public ResponseEntity removerDentista(@PathVariable Long id){
         var dentista = repository.getReferenceById(id);
         dentista.atualizarStatus();
-
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("{id}")
     public ResponseEntity detalharDentista(@PathVariable Long id){
+        
         var dentista = repository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDetalhamentoDentista(dentista));
     }

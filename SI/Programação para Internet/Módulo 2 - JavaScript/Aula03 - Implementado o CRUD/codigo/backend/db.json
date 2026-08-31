@@ -1,0 +1,28 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Notebook Dell Inspiron",
+      "categoria": "computadores",
+      "preco": 3499.90,
+      "estoque": 12,
+      "descricao": "Notebook para estudos, trabalho e uso diário."
+    },
+    {
+      "id": 2,
+      "nome": "Mouse Logitech M280",
+      "categoria": "perifericos",
+      "preco": 89.90,
+      "estoque": 35,
+      "descricao": "Mouse sem fio com conexão USB e design ergonômico."
+    },
+    {
+      "id": 3,
+      "nome": "Headset Gamer HyperX",
+      "categoria": "gamer",
+      "preco": 249.90,
+      "estoque": 18,
+      "descricao": "Headset gamer com microfone integrado e áudio estéreo."
+    }
+  ]
+}
