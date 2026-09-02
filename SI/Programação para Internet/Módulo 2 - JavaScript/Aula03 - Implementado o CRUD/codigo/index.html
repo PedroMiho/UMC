@@ -12,6 +12,7 @@
     <title>Tech Store | Produtos</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
 
@@ -81,7 +82,7 @@
                 </div>
 
 
-                <button type="button" class="button button-primary">
+                <!-- <button type="button" class="button button-primary">
 
                     <span>
                         +
@@ -89,7 +90,7 @@
 
                     Novo Produto
 
-                </button>
+                </button> -->
 
             </section>
 
@@ -104,7 +105,7 @@
                 pelo JavaScript para apresentar mensagens
                 de sucesso ou erro.
             -->
-
+<!-- 
             <div class="alert alert-success hidden" role="alert">
 
                 <span class="alert-icon">
@@ -115,7 +116,7 @@
                     Operação realizada com sucesso!
                 </span>
 
-            </div>
+            </div> -->
 
 
 
@@ -283,47 +284,24 @@
 
                         <tbody id="mostrarProdutos">
 
-
-                            <!--
-                                A tabela começa vazia.
-
-                                Posteriormente o JavaScript
-                                irá inserir os produtos
-                                recebidos da API REST.
-                            -->
-
-
                             <tr class="empty-state">
 
-                                <td colspan="6" >
-
-
+                                <td colspan="6" id="verificaProduto">
                                     <div class="empty-content" >
-
-
                                         <div class="empty-icon">
                                             📦
                                         </div>
-
-
                                         <h3>
                                             Nenhum produto cadastrado
                                         </h3>
-
-
                                         <p>
                                             Cadastre seu primeiro produto
                                             utilizando o formulário abaixo.
                                         </p>
-
-
                                     </div>
-
-
                                 </td>
 
                             </tr>
-
 
                         </tbody>
 
@@ -335,14 +313,10 @@
 
                 <!-- PAGINAÇÃO -->
 
-                <div class="pagination">
+                <!-- <div class="pagination">
 
 
-                    <span>
-                        Nenhum produto cadastrado
-                    </span>
-
-
+                    
                     <div class="pagination-buttons">
 
 
@@ -364,7 +338,7 @@
                     </div>
 
 
-                </div>
+                </div> -->
 
 
             </section>
@@ -579,6 +553,7 @@
     </footer>
 
     <script type="module" src="js/consultasAPI.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 
 
