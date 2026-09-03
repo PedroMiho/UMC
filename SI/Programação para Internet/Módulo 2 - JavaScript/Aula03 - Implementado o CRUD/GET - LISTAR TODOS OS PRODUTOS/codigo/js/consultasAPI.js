@@ -66,12 +66,11 @@ function listarProdutos(produtos){
 
         botaoEditar.textContent = "Editar"
 
-        botaoEditar.classList.add(
-            "btn",
-            "btn-warning",
-            "btn-sm",
-            "me-2"
-        )
+        botaoEditar.classList.add("btn", "btn-warning", "btn-sm", "me-2")
+
+        botaoEditar.addEventListener("click", async () => {
+            await editarProduto(produto)
+        })
 
 
         // BOTÃO EXCLUIR
@@ -79,17 +78,11 @@ function listarProdutos(produtos){
 
         botaoExcluir.textContent = "Excluir"
 
-        botaoExcluir.classList.add(
-            "btn",
-            "btn-danger",
-            "btn-sm"
-        )
+        botaoExcluir.classList.add("btn", "btn-danger", "btn-sm")
 
 
         botaoExcluir.addEventListener("click", async () => {
-
             await excluirProduto(produto.id)
-
         })
 
 
@@ -109,4 +102,7 @@ function listarProdutos(produtos){
     })
 }
 
+
+
 consulta.mostrarProdutos()
+
