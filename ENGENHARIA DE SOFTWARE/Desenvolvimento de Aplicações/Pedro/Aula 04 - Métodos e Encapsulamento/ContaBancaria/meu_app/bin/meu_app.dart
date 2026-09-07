@@ -1,70 +1,53 @@
 void main() {
-  // Criando uma conta
-  ContaBancaria conta = ContaBancaria('João');
-
-  // Exibindo os dados iniciais
-  print('Titular: ${conta.titular}');
-  print('Saldo inicial: ${conta.saldo}');
-
-  // Realizando um depósito
-  conta.depositar(1000);
-
-  // Consultando o saldo
-  print('Saldo após depósito: ${conta.saldo}');
-
-  // Realizando um saque
-  conta.sacar(300);
-
-  // Consultando o saldo novamente
-  print('Saldo após saque: ${conta.saldo}');
-
-  // Tentando sacar um valor maior que o saldo
-  conta.sacar(1000);
-
-  // Exibindo o saldo final
-  print('Saldo final: ${conta.saldo}');
+  //Instância do objeto
+  Roupa camisa = Roupa("Camisa", 150, 15);
+  print(camisa.exibirInformacaoRoupa());
+  camisa.acescentarCamisa(10);
+  print(camisa.exibirInformacaoRoupa());
+  camisa.decrementarCamisas(10);
+  print(camisa.exibirInformacaoRoupa());
 }
 
-class ContaBancaria {
-  String titular;
-  double _saldo = 0;
+class Roupa {
+  String tipo;
+  double valor;
+  int quantidade;
 
-  ContaBancaria(this.titular);
+  //Construtor
+  Roupa(this.tipo, this.valor, this.quantidade);
 
-  // Método para depositar dinheiro
-  void depositar(double valor) {
-    if (valor > 0) {
-      _saldo += valor;
-      print('Depósito realizado com sucesso!');
+  //Métodos
+
+  //Método void
+  //Acrescentar camisa no estoque
+  void acescentarCamisa(int quantidade) {
+    if (quantidade > 0) {
+      this.quantidade += quantidade;
     } else {
-      print('O valor do depósito deve ser maior que zero.');
+      print("Quantidade inválida");
     }
   }
 
-  // Método para sacar dinheiro
-  bool sacar(double valor) {
-    if (valor <= 0) {
-      print('O valor do saque deve ser maior que zero.');
-      return false;
+  //Retirar camisas do estoque
+  void decrementarCamisas(int quantidade) {
+    if (quantidade > 0 && this.quantidade >= quantidade) {
+      this.quantidade -= quantidade;
+    } else {
+      print("Quantidade inválida");
     }
-
-    if (valor > _saldo) {
-      print('Saldo insuficiente.');
-      return false;
-    }
-
-    _saldo -= valor;
-    print('Saque realizado com sucesso!');
-    return true;
   }
 
-  // Método que retorna o saldo
-  double consultarSaldo() {
-    return _saldo;
+  //Método calcular valor no estoque
+  double valorTotal() {
+    double valorTotal = valor * quantidade;
+    return valorTotal;
   }
 
-  // Getter para consultar o saldo
-  double get saldo => _saldo;
+  //Método exibir informações
+  String exibirInformacaoRoupa() {
+    return "Produto: $tipo\n"
+        "Valor: R\$ $valor\n"
+        "Quantidade: $quantidade\n"
+        "Valor total no estoque: R\$ ${valorTotal()}";
+  }
 }
-
-
