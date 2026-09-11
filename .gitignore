@@ -1,0 +1,33 @@
+# Java e Maven
+target/
+bin/
+out/
+*.class
+*.jar
+*.war
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Node.js
+node_modules/
+dist/
+coverage/
+
+# Dart
+.dart_tool/
+build/
+
+# Configurações locais e credenciais
+.env
+.env.*
+application-local.properties
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
