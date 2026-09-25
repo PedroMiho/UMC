@@ -139,7 +139,7 @@
                             Total de produtos
                         </span>
 
-                        <strong class="stat-value">
+                        <strong class="stat-value" id="totalProdutos">
                             0
                         </strong>
 
@@ -161,7 +161,7 @@
                             Categorias
                         </span>
 
-                        <strong class="stat-value">
+                        <strong class="stat-value" id="totalCategorias">
                             0
                         </strong>
 
@@ -183,7 +183,7 @@
                             Valor médio
                         </span>
 
-                        <strong class="stat-value">
+                        <strong class="stat-value" id="valorMedio">
                             R$ 0,00
                         </strong>
 
@@ -313,32 +313,13 @@
 
                 <!-- PAGINAÇÃO -->
 
-                <!-- <div class="pagination">
-
-
-                    
+                <div class="pagination">
+                    <span id="paginaAtual" aria-live="polite">Página 1 de 1</span>
                     <div class="pagination-buttons">
-
-
-                        <button type="button" disabled aria-label="Página anterior">
-                            ←
-                        </button>
-
-
-                        <button type="button" disabled>
-                            1
-                        </button>
-
-
-                        <button type="button" disabled aria-label="Próxima página">
-                            →
-                        </button>
-
-
+                        <button id="anterior" type="button" disabled aria-label="Página anterior">←</button>
+                        <button id="proxima" type="button" disabled aria-label="Próxima página">→</button>
                     </div>
-
-
-                </div> -->
+                </div>
 
 
             </section>
@@ -552,8 +533,9 @@
 
     </footer>
 
-    <script type="module" src="js/consultasAPI.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <script type="module" src="js/consultasAPI.js"></script>
 </body>
 
 

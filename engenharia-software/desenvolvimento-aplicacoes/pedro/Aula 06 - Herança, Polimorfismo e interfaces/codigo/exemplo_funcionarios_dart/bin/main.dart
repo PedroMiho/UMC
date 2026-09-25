@@ -25,7 +25,7 @@ void main() {
 
     // Verifica se o objeto implementa a interface Bonificavel.
     if (funcionario is Bonificavel) {
-      double bonus = funcionario.calcularBonificacao();
+      var bonus = funcionario.calcularBonificacao();
       print('Bonificação: R$ ${bonus.toStringAsFixed(2)}');
     } else {
       print('Este cargo não recebe bonificação.');

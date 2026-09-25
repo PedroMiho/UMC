@@ -28,9 +28,8 @@ abstract class Funcionario {
 
   // Método concreto que pode ser utilizado por todas as subclasses.
   void exibirInformacoes() {
-    print('Cargo: $cargo');
     print('Nome: $nome');
-    print('Salário: R$ ${salario.toStringAsFixed(2)}');
+    print('Salário: ${salario.toStringAsFixed(2)}');
   }
 }
 
