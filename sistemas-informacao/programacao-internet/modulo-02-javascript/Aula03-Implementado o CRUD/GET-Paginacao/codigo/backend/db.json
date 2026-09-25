@@ -1,0 +1,52 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Notebook Dell Inspiron",
+      "categoria": "computadores",
+      "preco": 3499.90,
+      "estoque": 12,
+      "descricao": "Notebook para estudos, trabalho e uso diário."
+    },
+    {
+      "id": 2,
+      "nome": "Notebook Dell Inspiron",
+      "categoria": "computadores",
+      "preco": 3499.90,
+      "estoque": 12,
+      "descricao": "Notebook para estudos, trabalho e uso diário."
+    },
+    {
+      "id": 3,
+      "nome": "Notebook Dell Inspiron",
+      "categoria": "computadores",
+      "preco": 3499.90,
+      "estoque": 12,
+      "descricao": "Notebook para estudos, trabalho e uso diário."
+    },
+    {
+      "id": 4,
+      "nome": "Notebook Dell Inspiron",
+      "categoria": "computadores",
+      "preco": 3499.90,
+      "estoque": 12,
+      "descricao": "Notebook para estudos, trabalho e uso diário."
+    },
+    {
+      "id": 5,
+      "nome": "Notebook Dell Inspiron",
+      "categoria": "computadores",
+      "preco": 3499.90,
+      "estoque": 12,
+      "descricao": "Notebook para estudos, trabalho e uso diário."
+    },
+    {
+      "id": 6,
+      "nome": "Notebook Dell Inspiron",
+      "categoria": "computadores",
+      "preco": 3499.90,
+      "estoque": 12,
+      "descricao": "Notebook para estudos, trabalho e uso diário."
+    }
+  ]
+}
