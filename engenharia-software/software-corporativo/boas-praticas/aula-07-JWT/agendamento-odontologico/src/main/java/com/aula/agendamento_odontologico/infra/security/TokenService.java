@@ -23,7 +23,7 @@ public class TokenService {
         try {
             var algotirmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("API Dentista")
+                    .withIssuer("API PEDRO")
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dataExpiracao())
                     .sign(algotirmo);
@@ -34,7 +34,7 @@ public class TokenService {
     }
 
     private Instant dataExpiracao() {
-        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+        return Instant.now().plusSeconds(7200);
     }
 
 }
