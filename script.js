@@ -1,10 +1,9 @@
 (async () => {
-  // Usa o documento do elemento selecionado no Inspecionar.
   const selecionado = typeof $0 !== "undefined" ? $0 : null;
   let pagina = selecionado?.ownerDocument || document;
 
-  // Procura também nos frames acessíveis, se necessário.
-  if (!pagina.querySelector('input[name^="rgm."]')) {
+  if (!pagina.querySelector('input[name^="rgm."]') ||
+      !pagina.querySelector('input[name^="M1_nova."]')) {
     const documentos = [];
     const visitados = new Set();
 
@@ -12,8 +11,10 @@
       if (!doc || visitados.has(doc)) return;
       visitados.add(doc);
 
-      if (doc.querySelector('input[name^="rgm."]') &&
-          doc.querySelector('input[name^="M1_nova."]')) {
+      if (
+        doc.querySelector('input[name^="rgm."]') &&
+        doc.querySelector('input[name^="M1_nova."]')
+      ) {
         documentos.push(doc);
       }
 
@@ -29,7 +30,7 @@
     if (documentos.length !== 1) {
       alert(
         "Não foi possível identificar uma única página de notas. " +
-        "Inspecione uma caixa de nota e execute novamente este código."
+        "Inspecione uma caixa de nota e execute novamente."
       );
       return;
     }
@@ -42,7 +43,7 @@
   ];
 
   if (!alunos.length) {
-    alert("Não encontrei os campos de RGM na página selecionada.");
+    alert("Não encontrei os campos de RGM.");
     return;
   }
 
@@ -57,7 +58,7 @@
         document.head.appendChild(script);
       });
     } catch {
-      alert("Não foi possível carregar a biblioteca de leitura do Excel.");
+      alert("Não foi possível carregar o leitor de Excel.");
       return;
     }
   }
@@ -67,32 +68,45 @@
   const painel = document.createElement("dialog");
   painel.id = "importador-notas-excel";
   painel.style.cssText = `
-    width:min(800px,90vw);max-height:85vh;overflow:auto;
-    padding:24px;border:1px solid #ccc;border-radius:12px;
-    background:white;color:#222;font:14px Arial;
+    width:min(800px,90vw);
+    max-height:85vh;
+    overflow:auto;
+    padding:24px;
+    border:1px solid #ccc;
+    border-radius:12px;
+    background:white;
+    color:#222;
+    font:14px Arial;
   `;
 
   painel.innerHTML = `
     <h2>Importar notas M1</h2>
     <p>${alunos.length} registros de alunos encontrados no portal.</p>
+    <p>As notas serão arredondadas para uma casa decimal.</p>
+
     <input data-id="arquivo" type="file" accept=".xlsx,.xls">
+
     <div data-id="opcoes" hidden>
       <p>Aba: <select data-id="aba"></select></p>
       <p>Coluna RGM: <select data-id="rgm"></select></p>
       <p>Coluna nota: <select data-id="nota"></select></p>
-      <p>Separador decimal:
+
+      <p>Separador decimal usado pelo portal:
         <select data-id="decimal">
           <option value=".">Ponto — 6.5</option>
           <option value=",">Vírgula — 6,5</option>
         </select>
       </p>
+
       <button type="button" data-id="conferir">Conferir notas</button>
       <button type="button" data-id="preencher" disabled>
         Preencher na página
       </button>
     </div>
+
     <p data-id="mensagem"></p>
     <div data-id="previa"></div>
+
     <p><button type="button" data-id="fechar">Fechar</button></p>
   `;
 
@@ -100,6 +114,7 @@
   painel.showModal();
 
   const el = id => painel.querySelector(`[data-id="${id}"]`);
+
   const rgmTexto = valor =>
     String(valor ?? "").trim().replace(/\.0$/, "");
 
@@ -136,6 +151,7 @@
     }
 
     const normalizar = valor => String(valor).trim().toLowerCase();
+
     const indiceRgm = titulos.findIndex(
       titulo => normalizar(titulo) === "rgm"
     );
@@ -171,7 +187,8 @@
       carregarAba();
       el("opcoes").hidden = false;
     } catch (erro) {
-      el("mensagem").textContent = "Erro ao ler o Excel: " + erro.message;
+      el("mensagem").textContent =
+        "Erro ao ler o Excel: " + erro.message;
     }
   };
 
@@ -184,8 +201,11 @@
   el("conferir").onclick = () => {
     limpar();
 
-    if (!linhas.length || el("rgm").value === "" ||
-        el("nota").value === "") {
+    if (
+      !linhas.length ||
+      el("rgm").value === "" ||
+      el("nota").value === ""
+    ) {
       el("mensagem").textContent = "A aba está vazia.";
       return;
     }
@@ -218,12 +238,12 @@
       const linha = input.closest("tr");
       const indice = input.name.substring("rgm.".length);
 
-      // Busca a nota na mesma linha do aluno e pelo nome exato.
       const campo = [...(linha?.querySelectorAll("input") || [])]
         .find(item => item.name === `M1_nova.${indice}`);
 
       const nome = linha?.cells[1]?.textContent.trim() || "";
       const valor = notas.get(rgm);
+
       let nota = "";
       let status = "";
 
@@ -231,23 +251,38 @@
         status = "RGM duplicado — revise";
       } else if (!notas.has(rgm)) {
         status = "RGM ausente no Excel";
-      } else if (!campo || campo.disabled || campo.readOnly) {
+      } else if (
+        !campo ||
+        campo.type !== "text" ||
+        campo.disabled ||
+        campo.readOnly
+      ) {
         status = "Campo M1 indisponível";
       } else if (valor == null || String(valor).trim() === "") {
         status = "Nota vazia — não preencher";
       } else {
+        // Aceita notas com vírgula ou ponto.
         const texto = String(valor).trim().replace(",", ".");
         const numero = Number(texto);
 
-        if (!/^\d+(\.\d+)?$/.test(texto) ||
-            !Number.isFinite(numero) || numero < 0 || numero > 10) {
-          status = "Nota inválida";
+        if (
+          !/^\d+(\.\d+)?$/.test(texto) ||
+          !Number.isFinite(numero) ||
+          numero < 0 ||
+          numero > 10
+        ) {
+          status = "Nota inválida — esperado entre 0 e 10";
         } else {
-          nota = String(Number(numero.toFixed(10)))
+          // Arredondamento para uma casa decimal.
+          const notaArredondada =
+            Math.round((numero + Number.EPSILON) * 10) / 10;
+
+          nota = notaArredondada
+            .toFixed(1)
             .replace(".", el("decimal").value);
 
           if (campo.maxLength >= 0 && nota.length > campo.maxLength) {
-            status = "Nota longa demais — revise o arredondamento";
+            status = "Nota excede o tamanho do campo";
           } else {
             status = campo.value.trim()
               ? `Substituir ${campo.value.trim()} por ${nota}`
@@ -258,28 +293,38 @@
         }
       }
 
-      return { RGM: rgm, Nome: nome, Nota: nota, Status: status };
+      return {
+        RGM: rgm,
+        Nome: nome,
+        Original: valor == null ? "" : String(valor),
+        Arredondada: nota,
+        Status: status
+      };
     });
 
     const tabela = document.createElement("table");
     tabela.style.cssText = "width:100%;border-collapse:collapse";
 
     const cabecalho = tabela.createTHead().insertRow();
-    ["RGM", "Nome", "Nota", "Status"].forEach(titulo => {
-      const celula = document.createElement("th");
-      celula.textContent = titulo;
-      celula.style.cssText = "text-align:left;padding:8px";
-      cabecalho.appendChild(celula);
-    });
+
+    ["RGM", "Nome", "Original", "Arredondada", "Status"]
+      .forEach(titulo => {
+        const celula = document.createElement("th");
+        celula.textContent = titulo;
+        celula.style.cssText = "text-align:left;padding:8px";
+        cabecalho.appendChild(celula);
+      });
 
     const corpo = tabela.createTBody();
 
     resultado.forEach(registro => {
       const linha = corpo.insertRow();
+
       Object.values(registro).forEach(valor => {
         const celula = linha.insertCell();
         celula.textContent = valor;
-        celula.style.cssText = "padding:8px;border-bottom:1px solid #ddd";
+        celula.style.cssText =
+          "padding:8px;border-bottom:1px solid #ddd";
       });
     });
 
@@ -287,6 +332,7 @@
     el("mensagem").textContent =
       `${plano.length} nota(s) pronta(s). Confira antes de preencher.`;
     el("preencher").disabled = plano.length === 0;
+
     console.table(resultado);
   };
 
@@ -297,15 +343,18 @@
       if (!campo.isConnected || campo.disabled || campo.readOnly) return;
 
       const Janela = campo.ownerDocument.defaultView;
+
       campo.value = nota;
       campo.dispatchEvent(new Janela.Event("input", { bubbles: true }));
       campo.dispatchEvent(new Janela.Event("change", { bubbles: true }));
+
       preenchidas++;
     });
 
     el("mensagem").textContent =
       `${preenchidas} nota(s) preenchida(s). ` +
       "Feche esta janela, confira e clique em Enviar no portal.";
+
     el("preencher").disabled = true;
   };
 
