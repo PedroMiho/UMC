@@ -1,0 +1,45 @@
+{
+  "produtos": [
+    {
+      "nome": "Notebook",
+      "categoria": "computadores",
+      "preco": 1000,
+      "estoque": 10,
+      "descricao": ".",
+      "id": "vHJbQwl9OQk"
+    },
+    {
+      "nome": "Notebook",
+      "categoria": "perifericos",
+      "preco": 1000,
+      "estoque": 10,
+      "descricao": "",
+      "id": "DIGT2xsxWT0"
+    },
+    {
+      "nome": "Notebook",
+      "categoria": "perifericos",
+      "preco": 1000,
+      "estoque": 10,
+      "descricao": "",
+      "id": "7QG5WCBh0MQ"
+    },
+    {
+      "nome": "Notebok",
+      "categoria": "computadores",
+      "preco": 15500,
+      "estoque": 10,
+      "descricao": "",
+      "id": "jHgE5YvFcKc"
+    },
+    {
+      "nome": "Notebok",
+      "categoria": "computadores",
+      "preco": 15.5,
+      "estoque": 10,
+      "descricao": "aa",
+      "id": "FgH19MwSm6s"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
