@@ -1,0 +1,100 @@
+.cadastro-evento {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #143c32;
+  font-family: Arial, sans-serif;
+}
+
+.cadastro-evento h2 {
+  margin-bottom: 16px;
+  font-family: Georgia, serif;
+  font-size: 39px;
+  line-height: 1.2;
+}
+
+.cadastro-descricao {
+  margin-bottom: 24px;
+  color: #546359;
+  font-size: 16px;
+}
+
+.evento-formulario {
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #c8cec1;
+  border-radius: 8px;
+}
+
+.evento-formulario h3 {
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+.evento-campos {
+  display: flex;
+  gap: 16px;
+}
+
+.evento-campo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #c8cec1;
+  border-radius: 8px;
+}
+
+.evento-campo label {
+  color: #546359;
+  font-size: 13px;
+}
+
+.evento-campo input,
+.evento-campo select {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  background-color: transparent;
+  color: #27352e;
+  font: inherit;
+  font-size: 16px;
+}
+
+.evento-campo:focus-within {
+  border-color: #143c32;
+}
+
+.evento-botao {
+  margin-top: 24px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #143c32;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.evento-botao:hover {
+  background-color: #235548;
+}
+
+.evento-aviso {
+  margin-top: 24px;
+  color: #546359;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .evento-campos {
+    flex-direction: column;
+  }
+
+  .cadastro-evento h2 {
+    font-size: 30px;
+  }
+}
