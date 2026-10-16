@@ -1,5 +1,40 @@
 import "./FormularioEvento.css"
 
+
+// props é um OBJETO
+// props .children
+function TituloFormulario(props){
+  return(
+    <h2>{props.children}</h2>
+  )
+}
+
+function TextoFormulario(props){
+  return (
+    <p className={props.className}>
+      {props.children}
+    </p>
+  )
+}
+
+// Componente reutilizável que recebe props
+function CampoFormulario({ id, label, tipo, placeholder }) {
+  return (
+    <div className="evento-campo">
+      <label htmlFor={id}>{label}</label>
+
+      <input
+        id={id}
+        name={id}
+        type={tipo}
+        placeholder={placeholder}
+        required
+      />
+    </div>
+  )
+}
+
+
 export default function FormularioEvento() {
   function criarEvento(evento) {
     evento.preventDefault()
@@ -8,58 +43,58 @@ export default function FormularioEvento() {
 
   return (
     <section className="cadastro-evento">
-      <h2>Sua ideia também faz parte da agenda.</h2>
+      
+      <TituloFormulario >
+        Sua ideia também faz parte da agenda
+      </TituloFormulario>
 
-      <p className="cadastro-descricao">
-        Compartilhe um encontro cultural com a comunidade.
-      </p>
+      <TextoFormulario className="cadastro-descricao">
+        Compartilhe um encontro cultural com a comunidade
+      </TextoFormulario>
 
       <form className="evento-formulario" onSubmit={criarEvento}>
         <h3>Preencha para criar um evento</h3>
 
         <div className="evento-campos">
-          <div className="evento-campo">
-            <label htmlFor="nome">Nome do evento</label>
-            <input
-              id="nome"
-              name="nome"
-              type="text"
-              placeholder="Ex.: Sarau na praça"
-              required
-            />
-          </div>
 
-          <div className="evento-campo">
-            <label htmlFor="data">Data do evento</label>
-            <input id="data" name="data" type="date" required />
-          </div>
+          <CampoFormulario
+            id="nome"
+            label="Nome do evento"
+            tipo="text"
+            placeholder="Ex.: Sarau na praça"
+          />
+
+          <CampoFormulario
+            id="data"
+            label="Data do Evento"
+            tipo="date"
+          />
+
 
           <div className="evento-campo">
             <label htmlFor="categoria">Categoria</label>
-            <select
-              id="categoria"
-              name="categoria"
-              defaultValue=""
-              required
-            >
-              <option value="" disabled>
-                Selecione uma opção
-              </option>
+
+            <select id="categoria" name="categoria" defaultValue="" required>
+              <option value="" disabled>Selecione uma opção</option>
               <option value="musica">Música</option>
               <option value="arte-cinema">Arte e cinema</option>
               <option value="oficinas">Oficinas</option>
             </select>
           </div>
+
         </div>
 
         <button className="evento-botao" type="submit">
           Criar evento
         </button>
 
-        <p className="evento-aviso">
+
+        <TextoFormulario className="evento-aviso">
           Nome, data e categoria são obrigatórios.
-        </p>
+        </TextoFormulario>
+
       </form>
+
     </section>
   )
 }
