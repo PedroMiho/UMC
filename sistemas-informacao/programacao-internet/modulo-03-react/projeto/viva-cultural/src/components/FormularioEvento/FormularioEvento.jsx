@@ -21,6 +21,7 @@ function TextoFormulario(props){
 function CampoFormulario({ id, label, tipo, placeholder }) {
   return (
     <div className="evento-campo">
+      {/* O htmlFor é uma propriedade do JSX que associa uma tag <label> a um campo de formulário, como <input> ou <select>. */}
       <label htmlFor={id}>{label}</label>
 
       <input
@@ -34,6 +35,26 @@ function CampoFormulario({ id, label, tipo, placeholder }) {
   )
 }
 
+function SelectFormulario(props) {
+  return (
+    <div className={props.campoClasse}>
+      <label htmlFor={props.id}>{props.label}</label>
+
+      <select id={props.id} name={props.id} defaultValue="" required>
+        <option value="" disabled>Selecione uma opção</option>
+        {props.children}
+      </select>
+    </div>
+  )
+}
+
+function BotaoFormulario(props) {
+  return (
+    <button className={props.botaoClasse} type={props.tipo}>
+      {props.children}
+    </button>
+  )
+}
 
 export default function FormularioEvento() {
   function criarEvento(evento) {
@@ -70,23 +91,21 @@ export default function FormularioEvento() {
             tipo="date"
           />
 
-
-          <div className="evento-campo">
-            <label htmlFor="categoria">Categoria</label>
-
-            <select id="categoria" name="categoria" defaultValue="" required>
-              <option value="" disabled>Selecione uma opção</option>
-              <option value="musica">Música</option>
-              <option value="arte-cinema">Arte e cinema</option>
-              <option value="oficinas">Oficinas</option>
-            </select>
-          </div>
-
+          <SelectFormulario
+            id="categoria"
+            label="Categoria"
+            campoClasse="evento-campo"
+          >
+            <option value="musica">Música</option>
+            <option value="arte-cinema">Arte e cinema</option>
+            <option value="oficinas">Oficinas</option>
+          </SelectFormulario>
+          
         </div>
 
-        <button className="evento-botao" type="submit">
+        <BotaoFormulario botaoClasse="evento-botao" tipo="submit">
           Criar evento
-        </button>
+        </BotaoFormulario>  
 
 
         <TextoFormulario className="evento-aviso">
