@@ -1,0 +1,12 @@
+.titulo-formulario {
+  margin-bottom: 16px;
+  font-family: Georgia, serif;
+  font-size: 39px;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .titulo-formulario {
+    font-size: 30px;
+  }
+}
