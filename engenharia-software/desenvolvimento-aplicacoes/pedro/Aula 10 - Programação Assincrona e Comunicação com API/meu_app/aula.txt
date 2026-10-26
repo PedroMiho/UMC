@@ -1,0 +1,197 @@
+1 - Comando Uri.parse(url)
+
+O comando print(get(Uri.parse(url))); faz uma requisição GET para uma URL e tenta imprimir o retorno. Vamos separar suas partes:
+
+- Uri.parse(url): converte o texto armazenado em url em um objeto Uri, formato esperado pela função get.
+
+- get(...): envia uma requisição HTTP GET, normalmente utilizada para buscar dados 
+de uma API.
+
+- print(...): exibe um valor no console.
+
+Porém, a requisição é assíncrona: ela precisa de tempo para receber a resposta. Por isso, get() retorna um Future<Response>, que representa uma resposta que ficará disponível depois.
+
+2 - Response e Future
+
+Response é a resposta HTTP recebida da API. Ela contém informações como:
+- statusCode: código que indica o resultado da requisição, como 200 para sucesso.
+- body: conteúdo retornado pela API, geralmente um texto em formato JSON.
+- headers: informações adicionais sobre a resposta, como o tipo de conteúdo.
+
+Future representa o resultado de uma operação assíncrona que será concluída depois. Ela pode terminar com um valor ou com um erro.
+
+Como uma requisição demora para receber uma resposta, get() retorna um Future<Response>: um resultado futuro que, se a operação tiver sucesso, fornecerá um Response.
+
+3 - Then
+
+Esse código usa .then() para executar uma função quando o Future terminar com sucesso, recebendo a resposta da requisição.
+futureResponse.then((Response response) {
+  print(response);
+});
+
+Veja cada parte:
+- futureResponse: variável do tipo Future<Response>, que representa o resultado futuro da requisição.
+- .then(...): define o que será executado quando a resposta estiver disponível.
+- (Response response): parâmetro da função que receberá a resposta. Response é o tipo e response é o nome da variável.
+- { print(response); }: bloco executado quando a resposta chegar.
+A função passada para .then() é uma função anônima, pois não possui nome. Nesse contexto, também é chamada de callback.
+
+Leitura do código: “Quando a requisição terminar com sucesso, receba a resposta na variável response e imprima essa resposta.”
+
+4 - JSON e Decode
+
+JSON é um formato de texto utilizado para trocar dados entre sistemas. Por exemplo, uma API pode retornar um produto assim:
+{"id": 1, "nome": "Notebook"}
+
+decode significa decodificar. Nesse caso, ele interpreta o texto JSON e o transforma em dados que o Dart consegue acessar.
+import 'dart:convert';
+
+void main() {
+  String texto = '{"id": 1, "nome": "Notebook"}';
+
+  var produto = json.decode(texto);
+
+  print(produto['nome']); // Notebook
+}
+
+Em json.decode(texto):
+- json é o objeto da biblioteca dart:convert que oferece as operações de conversão de JSON.
+- decode() é o método que transforma o texto em objetos Dart, como mapas e listas.
+No seu código:
+List<dynamic> listaProdutos = json.decode(response.body);
+
+O response.body contém o texto enviado pela API. O json.decode() transforma esse texto em uma lista, considerando que a API retornou um array JSON ([...]).
+
+5 - firstWhere
+
+Esse código procura o filme “Interestelar” na lista retornada pela API e imprime sua duração em minutos.
+
+1. Converte o JSON em uma lista
+List<dynamic> listaProdutos = json.decode(response.body);
+
+O response.body contém o texto recebido da API. O json.decode() transforma esse texto em dados Dart.
+
+Nesse caso, esperamos uma lista como esta:
+[
+  {"titulo": "Avatar", "duracaoMinutos": 162},
+  {"titulo": "Interestelar", "duracaoMinutos": 169}
+]
+
+2. Busca o filme na lista
+Map<String, dynamic> mapInterestelar = listaProdutos.firstWhere(
+  (element) => element["titulo"] == "Interestelar",
+);
+
+- firstWhere(): percorre a lista e retorna o primeiro item que atende à condição.
+- element: representa cada item analisado.
+- element["titulo"]: acessa o título desse item.
+- == "Interestelar": verifica se o título é exatamente “Interestelar”.
+- =>: forma curta de escrever uma função que retorna uma única expressão.
+Essa condição também poderia ser escrita assim:
+(element) {
+  return element["titulo"] == "Interestelar";
+}
+
+O filme encontrado é armazenado em mapInterestelar, do tipo Map<String, dynamic>: suas chaves são textos, e seus valores podem ter diferentes tipos.
+// Exemplo do mapa encontrado:
+{"titulo": "Interestelar", "duracaoMinutos": 169}
+
+3. Exibe a duração
+print(mapInterestelar["duracaoMinutos"]);
+
+Acessa o valor associado à chave "duracaoMinutos" e imprime:
+169
+
+Atenção: se nenhum item tiver o título “Interestelar”, o firstWhere() lançará um erro, pois nesse código não foi definido o que fazer quando não houver resultado.
+
+6 - Diferença entre sincronimso e assincronismo
+
+Sincronismo e assincronismo são formas de organizar a execução das operações de um programa.
+
+Síncrono: uma operação precisa terminar para a próxima começar.
+
+Imagine uma fila: uma pessoa é atendida, termina e depois a próxima é chamada.
+print("Início");
+print("Buscando produtos");
+print("Fim");
+
+As instruções são executadas em sequência.
+
+Assíncrono: uma operação pode ser iniciada e, enquanto o resultado não chega, o programa pode continuar executando outras tarefas.
+
+Imagine pedir comida: enquanto o restaurante prepara o pedido, você pode fazer outras coisas.
+
+Isso é útil em requisições de API, porque a resposta depende da rede e do servidor.
+print("Início");
+
+get(Uri.parse(url)).then((response) {
+  print("Resposta recebida");
+});
+
+print("Continuando o programa");
+
+A ordem será:
+Início
+Continuando o programa
+Resposta recebida
+
+O .then() define o que fazer quando a resposta chegar.
+
+7 - Async e Await
+
+
+No Dart, async e await permitem trabalhar com operações assíncronas, como requisições de API, mantendo o código fácil de ler.
+
+async: indica que a função pode usar await
+
+Colocamos async depois dos parênteses da função:
+
+void main() async {
+  // Aqui podemos usar await.
+}
+
+Usar async não faz todas as instruções executarem ao mesmo tempo.
+
+await: aguarda o resultado de um Future
+
+Ele pausa a execução da função atual até a operação terminar, sem bloquear toda a aplicação.
+
+void main() async {
+  print("Buscando os filmes...");
+
+  Response resposta = await get(Uri.parse(url));
+
+  print(resposta.body);
+  print("Busca finalizada!");
+}
+
+Nesse exemplo:
+
+Exibe "Buscando os filmes...".
+Inicia a requisição com get().
+O await aguarda a resposta.
+Quando ela chega, armazena o Response em resposta.
+Exibe os dados e a mensagem final.
+Enquanto essa função aguarda, outras tarefas da aplicação podem continuar.
+
+Comparando com .then()
+
+Com .then(), você informa uma função para executar quando a resposta chegar:
+
+get(Uri.parse(url)).then((Response resposta) {
+  print(resposta.body);
+});
+
+Com await, você escreve a continuação logo abaixo da requisição:
+
+Response resposta = await get(Uri.parse(url));
+
+print(resposta.body);
+
+Esse segundo trecho precisa estar dentro de uma função marcada com async.
+
+Palavra	Função
+async	Permite usar await dentro da função.
+await	Aguarda a conclusão de um Future e obtém seu resultado.
+Na analogia da salada: o await em “cozinhar o ovo” faz aquela função esperar o cozimento antes de seguir para a próxima instrução. Para picar os legumes durante essa espera, essa tarefa precisa ser organizada separadamente.
+
